@@ -5,7 +5,7 @@
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Título del proyecto} 
+\titulo{Desarrollo de una herramienta predictiva de la potencia límite de canal de la Central Nuclear Atucha II entrenada con simulaciones de código de subcanales} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 %\posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -16,22 +16,23 @@
 
 % Tu nombre, se puede usar el cualquier lugar del documento con el comando \authorname
 % IMPORTANTE: no omitir titulaciones ni tildación en los nombres, también se recomienda escribir los nombres completos (tal cual los tienen en su documento)
-\autor{Título y Nombre del autor}
+\autor{Ing. Juan Ignacio Teich}
 
 % El nombre del director y co-director, se puede usar el cualquier lugar del documento con el comando \supname y \cosupname y \pertesupname y \pertecosupname
-\director{Título y Nombre del director}
-\pertenenciaDirector{pertenencia} 
+\director{Mgt. Ing. Martín Sebastián Silva}
+\pertenenciaDirector{Nucleoeléctrica Argentina S.A.} 
 \codirector{} % para que aparezca en la portada se debe descomentar la opción codirector en los parámetros de documentclass
 \pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
-\empresaCliente{Empresa del cliente}
+\cliente{Departamento de Diseño Termohidráulico}
+\empresaCliente{Nucleoeléctrica Argentina S.A.}
  
-\fechaINICIO{30 de abril de 2023}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlan{18 de junio de 2023} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2024}	%Fecha de defensa pública del trabajo final
+\fechaINICIO{3 de marzo de 2026}		%Fecha de inicio de la cursada de GdP \fechaInicioName
+\fechaFINALPlan{21 de abril de 2026} 	%Fecha de final de cursada de GdP
+\fechaFINALTrabajo{XX de YYYY de 2026}	%Fecha de defensa pública del trabajo final
 
+\newcommand{\CNA}{Central Nuclear Atucha II}
 
 \begin{document}
 
@@ -59,7 +60,7 @@
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
-%1      & Se completa hasta el punto 5 inclusive                & {día} de {mes} de 202X \\ \hline
+1      & Se completa hasta el punto 5 inclusive                & 15 de marzo de 2026 \\ \hline
 %2      & Se completa hasta el punto 9 inclusive
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
@@ -85,7 +86,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'' y consistirá en \textcolor{red}{la implementación de un prototipo de un sistema de control de temperatura de una caldera industrial}. El trabajo tendrá un presupuesto preliminar estimado de \textcolor{red}{600} horas y un costo estimado de \textcolor{red}{\$ XXX}, con fecha de inicio el \fechaInicioName\hspace{1px} y fecha de presentación pública el \fechaFinalName.
+Por medio de la presente se acuerda con el \authorname{} que su Trabajo Final de la \degreename{} se titulará ``\ttitle'' y consistirá en la implementación de un modelo de aprendizaje profundo para cálculo de potencia límite de canal. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de \$6.250.000,00, con fecha de inicio el \fechaInicioName{} y fecha de presentación pública el \fechaFinalName{}.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -106,144 +107,84 @@ Se adjunta a esta acta la planificación inicial.
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-El objetivo es que el lector, en una o dos páginas, exponga de qué se trata el proyecto y cuáles son sus desafíos, cuál es la motivación para realizarlo y su importancia.
+Dentro de las tareas necesarias para el funcionamiento de la \CNA{} (CNA-II) se tiene la determinación de la estrategia de recambio de combustibles. Los combustibles de la Central son compuestos por Uranio Natural, los cuales son recambiados por nuevos o reordenados dentro del propio reactor durante la operación para garantizar un correcto perfil de potencia en el reactor. El desarrollo de la estrategia en sí es parte de los cálculos neutrónicos del Departamento de Física del Reactor, pero una parte de este proceso es el cálculo de las potencias límites de canal (PLC) derivadas de las potencias de los elementos combustibles. Este cálculo es responsabilidad del \clientename{}, cliente del presente trabajo.
 
-Se debe introducir el contexto del proyecto, el estado del arte en la temática, describir la propuesta de valor, cuál es el problema que atiende y cuál es la solución que se propone. Se debe dar una descripción funcional de la solución que incluya un diagrama en bloques.
+Las PLC tienen dos criterios por los cuales se calculan: margen a la desviación de la ebullición nucleada (Departure from Nucleate Boiling Ratio o DNBR), y por vacío (porcentaje de vapor en el fluido a la salida). El DNBR es un margen establecido en el diseño termohidráulico del reactor que tienen en cuenta las distintas incertidumbres que se tienen en el cálculo del DNB (desviación de la ebullición nucleada), y en el caso de la CNA-II tiene un valor de $1.89$. El límite por vacío estipula que el fluido a la salida de los canales refrigerantes no debe tener más de un $25\%$ de vacío, por cuestiones de preservación mecánica de los canales refrigerantes. De estos dos criterios se elige aquel que tenga un menor valor de potencia como la potencia límite de canal.
 
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-
+Actualmente, el cálculo de las PLC se realiza por medio del software COBRA-3CP, un código de subcanales estándar de la industria nuclear, que fue modificado por la empresa INVAP para ajustarse a la geometría de diseño de los elementos combustibles del reactor de CNA-II. Los datos de entrada para el cálculo con COBRA son:
 \begin{itemize}
-	\item ¿Cuál es el contexto del proyecto, es un emprendimiento personal, un proyecto para una empresa, es parte del programa de vinculación con empresas del posgrado?
-	\item ¿Existen o aplican condiciones especiales al proyecto, financiamiento de algún programa público o privado, acuerdos de confidencialidad, acuerdos sobre la propiedad intelectual de los entregables u otros?
-	\item ¿Cómo se compara la solución propuesta con el estado del arte en el campo de aplicación? ¿En qué aspectos destaca?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está la solución que se propone?
-	\item ¿Cuáles son las características del cliente (el adoptante de los entregables del proyecto) qué valora, qué necesita?
-	\item ¿Por dónde pasa la innovación?
+  \item Perfil de potencia axial global.
+  \item Perfil de potencia radial para cada barra combustible.
+  \item Condiciones del agua pesada a la entrada del canal refrigerante (caudal, presión y temperatura).
 \end{itemize}
+Estos parámetros cambian para cada estado del reactor, y en cada estado del reactor cambian para cada uno de los 451 canales refrigerantes. Entonces se tienen 451 cálculos a realizar por cada estado del reactor en una estrategia de recambio de combustibles, las cuales pueden tener entre 4000 y 10000 estados, llevando la cantidad de casos a simular por COBRA por sobre los 4 millones en algunos casos. Esto implica periodos de cálculo muy extensos, y además se debe tener la capacidad de almacenamiento de las salidas del código para su post procesamiento, o realizar post procesamiento en línea con las dificultades que esto conlleva. 
 
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y descripción funcional de la solución propuesta.
+Lo único que termina interesando son los casos que predicen la menor PLC para cada canal refrigerante, por lo que gran parte de la salida entregada por COBRA no es de interés. Es sobre este punto que se plantea desarrollar una herramienta que permita estimar la PLC de manera más rápida y eficiente en almacenamiento, para poder obtener los peores casos para cada canal refrigerante y luego validar con COBRA el resultado de PLC en ellos (por razones normativas).
 
-Las figuras se deben mencionar en el texto ANTES de que aparezcan con una frase como la siguiente: ``En la figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''.  La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
+Se propone implementar una red neuronal entrenada a partir de las simulaciones realizadas con COBRA para casos de estrategia de combustible, es decir, con el reactor en condiciones nominales. Se evaluará la implementación de variantes de redes neuronales tradicionales, como redes neuronales informadas por física, aplicando las ecuaciones de balance de masa, energía y de cantidad de movimiento, así como también las ecuaciones de subcanales que tiene incorporadas COBRA.
+
+Es de interés también obtener conocimiento sobre como las distintas formas de los perfiles de potencia impactan en las PLC, por lo que se realizará un estudio sobre ello por medio de embeddings que concentren las características principales de los perfiles.
+
+En la Figura \ref{fig:diag_bloques} se tiene un diagrama de bloques del proceso de cálculo actual y del propuesto a desarrollar en este trabajo.
 
 \begin{figure}[htpb]
-\centering 
-\includegraphics[width=.65\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema.}
-\label{fig:diagBloques}
+  \centering
+  \includegraphics[width=\textwidth]{Figuras/diag_bloques_CEIA_TPF.png}
+  \caption{Diagrama de bloques de método de cálculo actual y propuesto.} \label{fig:diag_bloques}
 \end{figure}
-
-\vspace{25px}
-
-El tamaño del texto en TODAS las figuras debe ser adecuado \textbf{para que NO pase lo que ocurre en la figura \ref{fig:diagBloques}}, donde el lector debe esforzarse para poder leer el texto. 
-
-Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama. Se recomienda evitar colores primarios (como rojo, verde o cyan) y usar la gama de colores pastel.
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-\textbf{Nota importante:} borrar esto y todas las consignas en color rojo antes de entregar este documento). Esto se hace eliminando el par de comandos que forman el bloque consigna, \verb!\begin{consigna}{red}! y \verb!\end{consigna}{red}! del código. 
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos. Si se considera que una persona cumple dos o más roles, entonces \textbf{solo dejarla en el rol más importante}. 
-
-Por ejemplo, si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente. Si una persona es el Responsable, \textbf{no debe ser colocado también como miembro del equipo}.
-
-
 \begin{table}[ht]
-%\caption{Identificación de los interesados}
-%\label{tab:interesados}
+\caption{Identificación de los interesados}
+\label{tab:interesados}
 \begin{tabularx}{\linewidth}{@{}|l|X|X|l|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+Cliente       & \clientename      &\empclientename	& -       	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director del Trabajo Final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
 \begin{itemize}
-	\item Orientador: la Dra. Ing. María Gómez es experta en la temática y va a ayudar con la definición de los requerimientos y el desarrollo del firmware del embebido.
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
+  \item Orientador: el Mgt. Ing. Martín Silva es el Jefe del \clientename{}, experto dentro de la industria nuclear con 20 años de experiencia en la Gerencia de Análisis de Seguridad y Diseño del Núcleo de Nucleoeléctrica Argentina S.A., y va a ayudar en la definición del alcance y en el desarrollo de la herramienta predictiva.
 \end{itemize}
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-
 
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-Se recomienda que sea solo un párrafo que continúe con la idea de la frase ``el propósito de este proyecto es...'' (omitir la frase, ya que está en el título de la sección).
-\end{consigna}
+Desarrollar un método de cálculo superador en cuanto a requerimientos de recursos computacionales, tiempos y logística computacional. Esto implicaría una disminución en la carga de trabajo del \clientename{}, permitiendo abocar más recursos y tiempos a otras tareas. Además el adquirir conocimiento respecto de la relación entre las variables de entrada y las PLC es algo deseado por el Departamento.
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
-
-Se refiere al trabajo que se va a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto. Por ejemplo:
-
 El proyecto incluye:
 \begin{itemize}
-	\item Ítem 1.
-	\item Ítem 2.
-		\begin{itemize}
-		\item Subítem 1.
-		\item Subítem 2.
-		\item ...
-		\end{itemize}
-	\item ...
-	
+  \item Desarrollo de un modelo de aprendizaje profundo que pueda replicar con error razonable los resultados que entrega el software COBRA-3CP, dentro de las condiciones de operación nominal de la \CNA{}.
+  \item Desarrollo de un flujo de trabajo para cálculo de las PLC con el modelo como centro.
+  \item Análisis de embeddings y características principales de los perfiles de potencia axial y radial, y su influencia en el valor final de PLC.
 \end{itemize}
 
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-
+Se encuentran fuera del alcance del proyecto:
+\begin{itemize}
+  \item Entrenamiento y evaluación del modelo en condiciones alejadas de la nominal.
+  \item Implementación del modelo dentro de otros códigos pertenecientes al \clientename{}.
+  \item Implementación desde cero del modelo de aprendizaje profundo.
+\end{itemize}
 
 \section{5. Supuestos del proyecto}
 \label{sec:supuestos}
 
-\begin{consigna}{red} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
-``Para el desarrollo del presente proyecto se supone que: ...''
-
+Para el desarrollo del presente proyecto se supone que: 
 \begin{itemize}
-	\item Supuesto 1.
-	\item Supuesto 2.
-	\item ...
+  \item \textbf{Supuesto 1:} el Alumno dispondrá de tiempo similar cada semana para el desarrollo del trabajo, con imprevistos que impidan la normal dedicación poco frecuentes. Está planeado dentro de las tareas laborales la realización de este trabajo.
+  \item \textbf{Supuesto 2:} se contará con disponibilidad de datos de simulaciones ya realizadas con COBRA, así como también la realización de nuevas simulaciones si fueran necesarias.
+  \item \textbf{Supuesto 3:} las herramientas disponibles online para implementación de modelos de aprendizaje profundo son adecuadas, confiables y eficientes para su uso en este trabajo, por ejemplo: \textit{scikit-learn}, \textit{pytorch}, \textit{numpy}, etc.
+  \item \textbf{Supuesto 4:} se tendrá acceso a capacidad de cómputo, ya sea por medios locales del \clientename{} o del Alumno, o por medios en la nube como \textit{Google Colab}.
 \end{itemize}
-
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-
-\end{consigna} % ELIMINAR \begin{consigna}{red} y \end{consigna}{red} en las secciones que vayan completando para cada entrega parcial.
 
 \section{6. Product Backlog}
 \label{sec:backlog}
