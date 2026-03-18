@@ -3,6 +3,9 @@
 %codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
+% paquetes de JIT
+\usepackage{makecell}
+
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
 \titulo{Desarrollo de una herramienta predictiva de la potencia límite de canal de la Central Nuclear Atucha II entrenada con simulaciones de código de subcanales} 
@@ -190,6 +193,70 @@ Para el desarrollo del presente proyecto se supone que:
 \section{6. Product Backlog}
 \label{sec:backlog}
 
+\begin{itemize}
+  \item \textbf{Épica 1: adquisición de datos}
+    \begin{itemize}
+      \item HU1: como Responsable, quiero determinar, en conjunto con el Director, el set de datos a adquirir, determinando qué casos ya están simulados y aquellos que deben ser simulados, para poder procesar los datos de forma acorde a su posterior utilización.
+      \item HU2: como Responsable, quiero simular los casos faltantes, para completar el set de datos de entrenamiento.
+      \item HU3: como Responsable, quiero desarrollar la herramienta para procesar archivos INPUT/OUTPUT de COBRA, para armar el set de datos.
+      %\item HU4: como Usuario final, quiero que la forma de ingreso de los datos esté definida y sea simple de implementar, para poder utilizar la herramienta de forma sencilla.
+    \end{itemize}
+  \item \textbf{Épica 2: desarrollo de modelo de red neuronal convencional}
+    \begin{itemize}
+      \item HU4: como Responsable, quiero probar distintas arquitecturas de red neuronal en base a los datos de simulaciones de COBRA, para obtener finalmente un modelo de red neuronal base funcional entregable.
+      \item HU5: como Usuario final, quiero tener un modelo básico con documentación de uso y métricas, para poder replicar los resultados que se obtienen con COBRA de forma más rápida y eficiente.
+    \end{itemize}
+  \item \textbf{Épica 3: análisis de embeddings y feature engineering para perfiles de potencia axiales y radiales}
+    \begin{itemize}
+      \item HU6: como Reponsable, quiero implementar feature engineering y embeddings sobre los datos de entrada, para buscar mejorar las capacidades predictivas de la red neuronal base.
+      \item HU7: como Cliente, quiero obtener figuras de mérito de los perfiles de potencia y combinación de otras variables, para mejorar la propuesta de estrategias de recambio de combustibles.
+    \end{itemize}
+  \item \textbf{Épica 4: implementación de red neuronal informada por física}
+    \begin{itemize}
+      \item HU8: como Responsable, quiero investigar y estudiar sobre redes neuronales informadas por física, para poder implementar dicho modelo.
+      \item HU9: como Cliente, quiero evaluar el impacto de utilizar redes neuronales informadas por física, para garantizar predicciones físicamente válidas.
+    \end{itemize}
+\end{itemize}
+
+En el Cuadro \ref{tab:story_points} se tienen los story points y prioridad de cada historia de usuario, los cuales están basados en el criterio establecido por el Cuadro \ref{tab:criterio_story_points}.
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{c|c|c|c|c|c}
+    \hline
+    Nro. HU & \thead{Tiempo\\ requerido} & \thead{Dificultad/complejidad\\ de la tarea} & \thead{Incerteza \\y riesgo} & Story points & Prioridad \\ \hline
+    1 & Bajo & Media & Bajo & 5 & Alta\\ \hline
+    2 & Bajo & Bajo & Bajo & 3 & Media\\ \hline
+    3 & Medio & Medio & Bajo & 8 & Alta\\ \hline
+    4 & Alto & Alto & Medio & 21 & Alta\\ \hline
+    5 & Bajo & Medio & Medio & 5 & Alta\\ \hline \hline
+    6 & Medio & Alta & Alta & 13 & Medio\\ \hline
+    7 & Medio & Alta & Alta & 13 & Baja\\ \hline \hline
+    8 & Alta & Alta & Alta & 21 & Media\\ \hline
+    9 & Media & Media & Alta & 8 & Media\\ \hline
+    
+  \end{tabular}
+  \caption{Story points y prioridad de las historias de usuario.}
+  \label{tab:story_points}
+\end{table}
+
+\begin{table}[hbt]
+  \centering
+  \begin{tabular}{c|c|c|c}
+    \hline
+    \thead{Tiempo\\ requerido} & \thead{Dificultad/complejidad\\ de la tarea} & \thead{Incerteza \\y riesgo} & Story points\\ \hline
+    Bajo        & Bajo        & Bajo        & 3\\ \hline 
+    Bajo        & Medio       & Bajo-Medio  & 5\\ \hline 
+    Medio       & Medio       & Medio       & 8\\ \hline 
+    Medio       & Alto        & Medio-Alto  & 13\\ \hline 
+    Alto        & Alto        & Medio-Alto  & 21\\ \hline 
+  \end{tabular}
+  \caption{Criterio de valor de story points.}
+  \label{tab:criterio_story_points}
+\end{table}
+
+\newpage
+\begin{consigna}{red}
 El Product Backlog debe organizarse en cuatro \textbf{\textit{\'{e}picas}} fundamentales del proyecto. Cada \'{e}pica debe contener al menos dos historias de usuario que describan funcionalidades clave.
 
 El Product Backlog debe permitir interpretar cómo será el proyecto y su funcionalidad. Se deben indicar claramente las prioridades entre las historias de usuario y si hay alguna opcional.
@@ -234,9 +301,82 @@ Las \'{e}picas deben estructurarse de la siguiente forma:
   \item Considerar regulaciones y normas vigentes.
 \end{itemize}
 
+\end{consigna}
+
 \section{7. Criterios de aceptación de historias de usuario}
 \label{sec:criteriosAceptacion}
 
+\begin{itemize}
+  \item \textbf{Épica 1: adquisición de datos}
+    \begin{itemize}
+      \item HU1 - determinación del set de datos:
+        \begin{itemize}
+          \item Búsqueda de datos disponible en el almacenamiento de la Gerencia.
+          \item Compilación de datos en un único directorio, con codificación de cada uno de forma clara.
+          \item Listado de datos disponibles y datos a simular.
+        \end{itemize}
+      \item HU2 - simulación de datos faltantes:
+        \begin{itemize}
+          \item Simulación de todos los datos establecidos previamente.
+          \item Almacenado de los archivos INPUT/OUTPUT, siguiendo reglas de codificación previamente establecidas.
+        \end{itemize}
+      \item HU3 - herramienta de procesamiento de archivos INPUT/OUTPUT:
+        \begin{itemize}
+          \item Herramienta que permita procesar en batch archivos INPUT/OUTPUT, obteniendo un único archivo de fácil importación luego (p.e.: .csv, .json, etc.).
+          \item Procesado de todos los datos almacenados.
+        \end{itemize}
+    \end{itemize}
+  \item \textbf{Épica 2: desarrollo de modelo de red neuronal convencional}
+    \begin{itemize}
+      \item HU4 - prueba de arquitectura de red neuronal:
+        \begin{itemize}
+          \item Realizar pruebas de hiperparámetros, funciones de activación, etc.
+          \item Obtener relación entre hiperparámetros, funciones de activación, etc. y precisión.
+          \item Analizar posible sobreajuste del modelo.
+          \item Determinar la arquitectura óptima para el problema en cuestión.
+        \end{itemize}
+      \item HU5 - modelo básico documentado:
+        \begin{itemize}
+          \item Repositorio de github documentado del modelo final en python.
+          \item Documentación de la arquitectura del modelo y sus métricas.
+          \item Justificación del porqué de la arquitectura, basado en lo probado en la HU anterior.
+        \end{itemize}
+    \end{itemize}
+  \item \textbf{Épica 3: análisis de embeddings y feature engineering para perfiles de potencia axiales y radiales}
+    \begin{itemize}
+      \item HU6 - feature engineering y embeddings:
+        \begin{itemize}
+          \item Implementación de embeddings para los perfiles de potencia.
+          \item Análisis de posible feature engineering: agregado de features que antes no se consideraban, descartado de features, análisis de dependencia, etc.
+          \item Definición de un modelo de red neuronal implementando lo anterior y comparación con modelo base.
+        \end{itemize}
+      \item HU7 - figuras de mérito:
+        \begin{itemize}
+          \item Análisis de los embeddings una vez entrenados, en particular si representan características puntuales de los perfiles de potencia.
+          \item Definición de figuras de mérito en base a los embeddings y feature engineering.
+        \end{itemize}
+    \end{itemize}
+  \item \textbf{Épica 4: implementación de red neuronal informada por física}
+    \begin{itemize}
+      \item HU8 - estudio redes neuronales informadas por física:
+        \begin{itemize}
+          \item Realización de la materia "Redes Neuronales Informadas por Física" de la CEIA.
+          \item Estudio del estado del arte en papers y libros.
+          \item Estudio de herramientas pre-codificadas (paquetes de python).
+          \item Implementación de casos simples de bibliografía.
+        \end{itemize}
+      \item HU9 - implementación redes neuronales informadas por física:
+        \begin{itemize}
+          \item Definición de las ecuaciones a implementar en el modelo.
+          \item Implementación de la red neuronal informada por física.
+          \item Análisis de hiperparámetros y métricas.
+          \item Definición de mejor modelo informado por física y comparativa con modelos previos.
+        \end{itemize}
+    \end{itemize}
+\end{itemize}
+
+
+\begin{consigna}{red}
 Los criterios de aceptación deben establecerse para cada historia de usuario, asegurando que se cumplan las condiciones necesarias para que la funcionalidad sea validada correctamente.
 
 Cada historia debe tener criterios medibles, específicos y verificables. Deben permitir validar que se cumple con las necesidades del usuario.
@@ -276,7 +416,11 @@ Se estructuran de forma análoga a las \'{e}picas del backlog:
   \item Mínimo 3 criterios por HU.
 \end{itemize}
 
+\end{consigna}
+
 \section{8. Fases de CRISP-DM}
+
+\begin{consigna}{red}
 
 \begin{enumerate}
   \item \textbf{Comprensión del negocio:} objetivo, valor agregado de IA, métricas de éxito.
@@ -287,8 +431,12 @@ Se estructuran de forma análoga a las \'{e}picas del backlog:
   \item \textbf{Despliegue del modelo (opcional):} tipo de despliegue y herramientas.
 \end{enumerate}
 
+\end{consigna}
+
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
+
+\begin{consigna}{red}
 
 A partir de cada Historia de Usuario (HU) definida en la sección 6, descomponer el trabajo en tareas técnicas concretas, medibles y acotadas en el tiempo.
 
@@ -335,7 +483,11 @@ HU2 & Tarea 2 HU2 & 6 h & Alta \\ \hline
   \item Este trabajo será la base para organizar algunos de los sprints y elaborar el cronograma del proyecto, por lo que debe ser claro y realista.
 \end{itemize}
 
+\end{consigna}
+
 \section{10. Planificación de Sprints}
+
+\begin{consigna}{red}
 
 Organizar las tareas técnicas del proyecto en sprints de trabajo que permitan distribuir de forma equilibrada la carga horaria total, estimada en 600 horas.
 
@@ -399,9 +551,12 @@ Sprint 6 & Defensa & Preparación de la exposición & 20 h / 13 SP & Alumno & 0\
   \item Considerar un sprint final exclusivo para pruebas, revisión y ajustes antes de la defensa.
 \end{itemize}
 
+\end{consigna}
 
 \section{11. Diagrama de Gantt (sprints)}
 \label{sec:gantt}
+
+\begin{consigna}{red}
 
 Visualizar en un diagrama de Gantt la planificación temporal del proyecto, tomando como base los sprints definidos en la sección anterior. Debe contemplar todas las horas del proyecto.
 
@@ -431,10 +586,12 @@ Recomendaciones para el Gantt:
 
 Incluir una imagen legible del diagrama de Gantt. Si es muy ancho, presentar primero la tabla y luego el gráfico de barras.
 
-
+\end{consigna}
 
 \section{12. Gobernanza de datos}
 \label{sec:gobernanza}
+
+\begin{consigna}{red}
 
 En esta sección se debe analizar de manera integral el marco normativo y ético asociado al uso de los datos y al desarrollo de soluciones basadas en inteligencia artificial.
 
@@ -472,6 +629,7 @@ Aspectos a considerar:
 
 \end{itemize}
 
+\end{consigna}
 
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
