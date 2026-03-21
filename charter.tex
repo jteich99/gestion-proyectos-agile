@@ -5,6 +5,8 @@
 
 % paquetes de JIT
 \usepackage{makecell}
+\usepackage{multirow, multicol}
+\usepackage{longtable}
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
@@ -112,7 +114,7 @@ Se adjunta a esta acta la planificación inicial.
 
 Dentro de las tareas necesarias para el funcionamiento de la \CNA{} (CNA-II) se tiene la determinación de la estrategia de recambio de combustibles. Los combustibles de la Central son compuestos por Uranio Natural, los cuales son recambiados por nuevos o reordenados dentro del propio reactor durante la operación para garantizar un correcto perfil de potencia en el reactor. El desarrollo de la estrategia en sí es parte de los cálculos neutrónicos del Departamento de Física del Reactor, pero una parte de este proceso es el cálculo de las potencias límites de canal (PLC) derivadas de las potencias de los elementos combustibles. Este cálculo es responsabilidad del \clientename{}, cliente del presente trabajo.
 
-Las PLC tienen dos criterios por los cuales se calculan: margen a la desviación de la ebullición nucleada (Departure from Nucleate Boiling Ratio o DNBR), y por vacío (porcentaje de vapor en el fluido a la salida). El DNBR es un margen establecido en el diseño termohidráulico del reactor que tienen en cuenta las distintas incertidumbres que se tienen en el cálculo del DNB (desviación de la ebullición nucleada), y en el caso de la CNA-II tiene un valor de $1.89$. El límite por vacío estipula que el fluido a la salida de los canales refrigerantes no debe tener más de un $25\%$ de vacío, por cuestiones de preservación mecánica de los canales refrigerantes. De estos dos criterios se elige aquel que tenga un menor valor de potencia como la potencia límite de canal.
+Las PLC tienen dos criterios por los cuales se calculan: margen a la desviación de la ebullición nucleada (Departure from Nucleate Boiling Ratio o DNBR), y por vacío (porcentaje de vapor en el fluido a la salida). El DNBR es un margen establecido en el diseño termohidráulico del reactor que tienen en cuenta las distintas incertidumbres que se tienen en el cálculo del DNB (desviación de la ebullición nucleada), y en el caso de la zona hidráulica 5 de CNA-II tiene un valor de $1.89$. El límite por vacío estipula que el fluido a la salida de los canales refrigerantes no debe tener más de un $25\%$ de vacío, por cuestiones de preservación mecánica de los canales refrigerantes. De estos dos criterios se elige aquel que tenga un menor valor de potencia como la potencia límite de canal.
 
 Actualmente, el cálculo de las PLC se realiza por medio del software COBRA-3CP, un código de subcanales estándar de la industria nuclear, que fue modificado por la empresa INVAP para ajustarse a la geometría de diseño de los elementos combustibles del reactor de CNA-II. Los datos de entrada para el cálculo con COBRA son:
 \begin{itemize}
@@ -311,35 +313,35 @@ Las \'{e}picas deben estructurarse de la siguiente forma:
     \begin{itemize}
       \item HU1 - determinación del set de datos:
         \begin{itemize}
-          \item Búsqueda de datos disponible en el almacenamiento de la Gerencia.
+          \item Realizar la búsqueda de datos disponible en el almacenamiento de la Gerencia.
           \item Compilación de datos en un único directorio, con codificación de cada uno de forma clara.
           \item Listado de datos disponibles y datos a simular.
         \end{itemize}
       \item HU2 - simulación de datos faltantes:
         \begin{itemize}
-          \item Simulación de todos los datos establecidos previamente.
+          \item Simulación de todos los datos faltantes establecidos previamente con COBRA-3CP.
           \item Almacenado de los archivos INPUT/OUTPUT, siguiendo reglas de codificación previamente establecidas.
         \end{itemize}
       \item HU3 - herramienta de procesamiento de archivos INPUT/OUTPUT:
         \begin{itemize}
           \item Herramienta que permita procesar en batch archivos INPUT/OUTPUT, obteniendo un único archivo de fácil importación luego (p.e.: .csv, .json, etc.).
-          \item Procesado de todos los datos almacenados.
+          \item Procesado de todos los datos almacenados y guardado en un archivo único (p.e.: parquet).
         \end{itemize}
     \end{itemize}
   \item \textbf{Épica 2: desarrollo de modelo de red neuronal convencional}
     \begin{itemize}
       \item HU4 - prueba de arquitectura de red neuronal:
         \begin{itemize}
-          \item Realizar pruebas de hiperparámetros, funciones de activación, etc.
-          \item Obtener relación entre hiperparámetros, funciones de activación, etc. y precisión.
-          \item Analizar posible sobreajuste del modelo.
+          \item Realizar y documentar pruebas de hiperparámetros, funciones de activación, etc. teniendo en cuenta métricas y análisis de sobreajuste.
+          % \item Obtener relación entre hiperparámetros, funciones de activación, etc. y precisión.
+          % \item Análisis  posible sobreajuste del modelo.
           \item Determinar la arquitectura óptima para el problema en cuestión.
         \end{itemize}
       \item HU5 - modelo básico documentado:
         \begin{itemize}
           \item Repositorio de github documentado del modelo final en python.
           \item Documentación de la arquitectura del modelo y sus métricas.
-          \item Justificación del porqué de la arquitectura, basado en lo probado en la HU anterior.
+          % \item Justificación del porqué de la arquitectura, basado en lo probado en la HU anterior.
         \end{itemize}
     \end{itemize}
   \item \textbf{Épica 3: análisis de embeddings y feature engineering para perfiles de potencia axiales y radiales}
@@ -353,14 +355,14 @@ Las \'{e}picas deben estructurarse de la siguiente forma:
       \item HU7 - figuras de mérito:
         \begin{itemize}
           \item Análisis de los embeddings una vez entrenados, en particular si representan características puntuales de los perfiles de potencia.
-          \item Definición de figuras de mérito en base a los embeddings y feature engineering.
+          \item Definición de figuras de mérito de los perfiles de potencia en base a los embeddings y feature engineering.
         \end{itemize}
     \end{itemize}
   \item \textbf{Épica 4: implementación de red neuronal informada por física}
     \begin{itemize}
       \item HU8 - estudio redes neuronales informadas por física:
         \begin{itemize}
-          \item Realización de la materia "Redes Neuronales Informadas por Física" de la CEIA.
+          \item Cursado de la materia "Redes Neuronales Informadas por Física" de la CEIA.
           \item Estudio del estado del arte en papers y libros.
           \item Estudio de herramientas pre-codificadas (paquetes de python).
           \item Implementación de casos simples de bibliografía.
@@ -370,120 +372,109 @@ Las \'{e}picas deben estructurarse de la siguiente forma:
           \item Definición de las ecuaciones a implementar en el modelo.
           \item Implementación de la red neuronal informada por física.
           \item Análisis de hiperparámetros y métricas.
-          \item Definición de mejor modelo informado por física y comparativa con modelos previos.
+          \item Definición de modelo informado por física final y comparativa con modelos previos.
         \end{itemize}
     \end{itemize}
 \end{itemize}
 
-
-\begin{consigna}{red}
-Los criterios de aceptación deben establecerse para cada historia de usuario, asegurando que se cumplan las condiciones necesarias para que la funcionalidad sea validada correctamente.
-
-Cada historia debe tener criterios medibles, específicos y verificables. Deben permitir validar que se cumple con las necesidades del usuario.
-
-Se estructuran de forma análoga a las \'{e}picas del backlog:
-
-\begin{itemize}
-  \item \textbf{\'{E}pica 1}
-    \begin{itemize}
-      \item Criterios de aceptación HU1
-      \item Criterios de aceptación HU2
-    \end{itemize}
-  \item \textbf{\'{E}pica 2}
-    \begin{itemize}
-      \item Criterios de aceptación HU3
-      \item Criterios de aceptación HU4
-    \end{itemize}
-  \item \textbf{\'{E}pica 3}
-    \begin{itemize}
-      \item Criterios de aceptación HU5
-      \item Criterios de aceptación HU6
-    \end{itemize}
-  \item \textbf{\'{E}pica 4}
-    \begin{itemize}
-      \item Criterios de aceptación HU7
-      \item Criterios de aceptación HU8
-    \end{itemize}
-\end{itemize}
-
-\textbf{Reglas para definir criterios de aceptación:}
-\begin{itemize}
-  \item Medibles y verificables.
-  \item Especificar cuándo una historia se considera completada.
-  \item Incluir condiciones específicas.
-  \item No ambiguos.
-  \item Probables de testear funcional o técnicamente.
-  \item Mínimo 3 criterios por HU.
-\end{itemize}
-
-\end{consigna}
-
 \section{8. Fases de CRISP-DM}
 
-\begin{consigna}{red}
-
 \begin{enumerate}
-  \item \textbf{Comprensión del negocio:} objetivo, valor agregado de IA, métricas de éxito.
-  \item \textbf{Comprensión de los datos:} tipo, origen, cantidad, calidad.
-  \item \textbf{Preparación de los datos:} características clave, transformaciones necesarias.
-  \item \textbf{Modelado:} tipo de problema, algoritmos posibles.
-  \item \textbf{Evaluación del modelo:} métricas de rendimiento.
-  \item \textbf{Despliegue del modelo (opcional):} tipo de despliegue y herramientas.
+  \item \textbf{Comprensión del negocio:}
+    \begin{itemize}
+      \item Objetivo: desarrollar una herramienta de predicción basade en aprendizaje profundo para predecir las potencias límite de canal de CNA-II con un menor costo computacional al método actual con COBRA-3CP.
+      \item Impacto: disminución del costo computacional, el tiempo de cálculo y los requerimientos de almacenamiento para simulaciones de estrategias de recambio de combustibles.
+      \item Métricas: tiempo para predicción sobre una gran cantidad de casos contra tiempo de simulación con COBRA-3CP, error relativo y absoluto frente a COBRA-3CP.
+    \end{itemize}
+  \item \textbf{Comprensión de los datos:}
+    \begin{itemize}
+      \item Tipos de datos: archivos de INPUT y OUTPUT de COBRA-3CP.
+      \item Fuentes de datos: simulaciones con COBRA-3CP.
+      \item Cantidad de datos: del orden de decenas de miles.
+      \item Calidad de datos: los datos deben ser procesados desde los archivos de texto a valores.
+    \end{itemize}
+  \item \textbf{Preparación de los datos:}
+    \begin{itemize}
+      \item Transformaciones: parseo de los archivos de INPUT y OUTPUT para obtener la información requerida.
+      % \item Características clave:
+    \end{itemize}
+  \item \textbf{Modelado:}
+    \begin{itemize}
+        \item Modelo de aprendizaje profundo: arquitectura de red neuronal tradicional, uso de embeddings, arquitectura de red neuronal informada por física.
+    \end{itemize}
+  \item \textbf{Evaluación del modelo:}
+    \begin{itemize}
+        \item Métricas: error relativo y absoluto en predicción de potencia límite de canal frente a COBRA-3CP, error relativo y absoluto en otras variables de interés de la salida de COBRA, tiempo para ejecutar una predicción.
+    \end{itemize}
 \end{enumerate}
-
-\end{consigna}
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
-
-A partir de cada Historia de Usuario (HU) definida en la sección 6, descomponer el trabajo en tareas técnicas concretas, medibles y acotadas en el tiempo.
-
-\begin{itemize}
-\item Seleccionar entre 2 y 3 tareas por cada historia de usuario.
-\item Cada tarea debe estar claramente formulada, ser técnica, accionable y con una estimación horaria entre 2 y 8 horas.
-\item Evitar tareas genéricas (como ''desarrollar funcionalidad´´) o demasiado amplias.
-\item Si una tarea supera las 8 horas, debe dividirse en subtareas.
-\item Indicar la prioridad relativa de cada tarea (Alta, Media o Baja).
-\end{itemize}
-
-\begin{table}[htpb]
-\centering
-\begin{tabularx}{\linewidth}{@{}|X|X|c|c|@{}}
+% \begin{table}[htpb]
+% % \centering
+% \begin{tabularx}{\linewidth}{@{}|X|X|c|c|@{}}
+% \begin{tabular}{|p{4cm}|p{6cm}|p{2.5cm}|p{2.5cm}|}
+\begin{longtable}{|p{4cm}|p{6cm}|c|c|}
 \hline
-\rowcolor[HTML]{C0C0C0}
+% \rowcolor[HTML]{C0C0C0}
+Historia de usuario & Tarea técnica & Estimación & Prioridad \\ \hline \endfirsthead
+\multicolumn{4}{c}{{Continuación de anterior página}} \\
 Historia de usuario & Tarea técnica & Estimación & Prioridad \\ \hline
-HU1 & Tarea 1 HU1 & 6 h & Alta \\ \hline
-HU1 & Tarea 2 HU1 & 8 h & Alta \\ \hline
-HU2 & Tarea 1 HU2 & 5 h & Media \\ \hline
-HU2 & Tarea 2 HU2 & 6 h & Alta \\ \hline
-... & ... & ... & ... \\ \hline
-\end{tabularx}
-\end{table}
+% \hline \textbf{Col 1} & \textbf{Col 2} & \textbf{Col 3} \\ \hline
+\endhead
+\hline \multicolumn{4}{|r|}{{Continúa en próxima página}} \\ \hline
+\endfoot
+\hline \hline
+\endlastfoot
+\multirow{3}{4cm}{HU1 - determinación del set de datos}  
+  & 1.1: Recopilación de datos de simulaciones de COBRA para estrategias de combustibles & 3 h & Alta \\ \cline{2-4}
+  & 1.2: Documentación de casos contemplados por las simulaciones ya hechas y cataloguización de los mismos. & 1 h & Alta \\ \cline{2-4}
+  & 1.3: Definición de datos de simulaciones faltantes. & 1 h & Alta \\ \hline
+\multirow{3}{4cm}{HU2 - simulación de datos faltantes}  
+  & 2.1: Armado de INPUTS sobre casos faltantes & 5 h & Media \\ \cline{2-4}
+  & 2.2: Simulación de casos faltantes & 10 h & Media \\ \cline{2-4}
+  & 2.3: Almacenado y cataloguización de salidas de las simulaciones & 1 h & Media \\ \hline
+\multirow{2}{4cm}{HU3 - herramienta de procesamiento de archivos de INPUT/OUTPUT}  
+  & 3.1: Desarrollo de herramienta para procesamiento de archivos de INPUT/OUTPUT & 6 h & Alta \\ \cline{2-4}
+  & 3.2: Procesado de archivos de INPUT/OUTPUT & 3 h & Alta \\ \hline
+\multirow{4}{4cm}{HU4 - prueba de arquitectura de red neuronal}  
+  & 4.1: Armado de estructura base sobre la que realizar pruebas & 4 h & Alta \\ \cline{2-4}
+  & 4.2: Realizado de pruebas de arquitectura de la red neuronal & 12 h & Alta \\ \cline{2-4}
+  & 4.3: Graficado de métricas y comparativa entre arquitecturas & 3 h & Alta \\ \cline{2-4}
+  & 4.4: Definición de arquitectura final & 1 h & Alta \\ \hline
+\multirow{3}{4cm}{HU5 - modelo básico documentado}  
+  & 5.1: Documentado de resultados de pruebas de arquitectura & 3 h & Alta \\ \cline{2-4}
+  & 5.2: Documentado de arquitectura final de red neuronal & 2 h & Alta \\ \cline{2-4}
+  & 5.3: Armado de versión entrenada en github de modelo & 2 h & Alta \\ \hline
+\multirow{8}{4cm}{HU6 - feature engineering y embeddings}  
+  & 6.1: Definición de nuevas features derivadas para probar su efecto & 2 h & Alta \\ \cline{2-4}
+  & 6.2: Pruebas de nuevas features & 6 h & Alta \\ \cline{2-4}
+  & 6.3: Armado de estructura base para entrenar embeddings & 4 h & Alta \\ \cline{2-4}
+  & 6.4: Prueba de entrenamientos de embeddings de los perfiles de potencia axial y radial & 10 h & Alta \\ \cline{2-4}
+  & 6.5: Análisis de diferencias en los perfiles según valores de embeddings & 3 h & Alta \\ \cline{2-4}
+  & 6.6: Prueba de modelo con embeddings y nuevas features & 10 h & Alta \\ \cline{2-4}
+  & 6.7: Definición de nuevo modelo incorporando embeddings y nuevas features & 3 h & Alta \\ \cline{2-4}
+  & 6.8: Comparativa de performance contra modelo base de red neuronal & 3 h & Alta \\ \hline
+\multirow{2}{4cm}{HU7 - figuras de mérito}  
+  & 7.1: Análisis de figuras de mérito en función de los embeddings entrenados y su relación con las PLC & 6 h & Baja \\ \cline{2-4}
+  & 7.2: Documentación de efecto de las figuras de mérito en las PLC  & 2 h & Baja \\ \cline{2-4}
+\multirow{3}{4cm}{HU8 - estudio de redes neuronales informadas por física}  
+  & 8.1: Cursado de materia "Redes Neuronales Informadas por Física" & 24 h & Media \\ \cline{2-4}
+  & 8.2: Lectura del estado del arte & 6 h & Media \\ \cline{2-4}
+  & 8.3: Aplicación de ejemplos básicos de redes neuronales informadas por física & 4 h & Alta \\ \hline
+\multirow{5}{4cm}{HU9 - implementación de redes neuronales informadas por física}  
+  & 9.1: Definición de las ecuaciones a aplicar en el modelo  & 3 h & Media \\ \cline{2-4}
+  & 9.1: Armado de modelo base de red neuronal informada por física con las ecuaciones definidas & 6 h & Media \\ \cline{2-4}
+  & 9.2: Análisis de hiperparámetros y arquitecturas & 10 h & Media \\ \cline{2-4}
+  & 9.3: Definición de red neuronal informada por física final & 2 h & Media \\ \cline{2-4}
+  & 9.4: Comparativa de performance contra modelos previamente desarrollados & 3 h & Media \\ \cline{2-4}
+  & 9.5: Documentación final de modelo final de red neuronal informada por física & 2 h & Media \\ \hline
+% \end{tabularx}
+\end{longtable}
+% \end{table}
 
-\textbf{Criterios para estimar tiempos:}
-\begin{itemize}
-  \item Considerar la complejidad técnica, el nivel de incertidumbre y la experiencia previa.
-  \item Evitar subestimar el esfuerzo: estimar el tiempo realista que llevaría implementar, testear y documentar cada tarea.
-  \item Basar la estimación en la experiencia propia o en referencias de tareas similares.
-\end{itemize}
 
-\textbf{Sobre la prioridad:}
-\begin{itemize}
-  \item Asignar una prioridad relativa (Alta, Media o Baja) según la relevancia funcional de la tarea y su impacto en los entregables.
-  \item Priorizar tareas que estén vinculadas a criterios de aceptación de las HU o que sean necesarias para desbloquear otras.
-  \item Incluir tareas opcionales solo si están bien justificadas.
-\end{itemize}
-
-\textbf{Recomendaciones generales:}
-\begin{itemize}
-  \item -Enfocarse en tareas que surgen directamente de las HU planteadas.
-  \item No es necesario cubrir las 600 horas del proyecto en esta sección: el foco está en el desglose de funcionalidades clave.
-  \item Este trabajo será la base para organizar algunos de los sprints y elaborar el cronograma del proyecto, por lo que debe ser claro y realista.
-\end{itemize}
-
-\end{consigna}
 
 \section{10. Planificación de Sprints}
 
