@@ -7,6 +7,8 @@
 \usepackage{makecell}
 \usepackage{multirow, multicol}
 \usepackage{longtable}
+\usepackage{pgfgantt}
+\usepackage{pdflscape}
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
@@ -67,6 +69,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 0      & Creación del documento                                 &\fechaInicioName \\ \hline
 1      & Se completa hasta el punto 5 inclusive                & 15 de marzo de 2026 \\ \hline
 2      & Se completa hasta el punto 9 inclusive                & 22 de marzo de 2026 \\ \hline
+3      & Se completa hasta el punto 12 inclusive               & 30 de marzo de 2026 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
@@ -200,64 +203,64 @@ A continuación se describen las épicas e historias de usuario de cada épica:
 \begin{itemize}
   \item \textbf{Épica 1: adquisición de datos}
     \begin{itemize}
-      \item HU1: como Responsable, quiero determinar, en conjunto con el Director, el set de datos a adquirir, determinando qué casos ya están simulados y aquellos que deben ser simulados, para poder procesar los datos de forma acorde a su posterior utilización.
-      \item HU2: como Responsable, quiero simular los casos faltantes, para completar el set de datos de entrenamiento.
-      \item HU3: como Responsable, quiero desarrollar la herramienta para procesar archivos INPUT/OUTPUT de COBRA, para armar el set de datos.
+      \item HU1: como Responsable, quiero determinar, en conjunto con el Director, el set de datos a adquirir, determinando qué casos ya están simulados y aquellos que deben ser simulados, para poder procesar los datos de forma acorde a su posterior utilización. Story points: 5 (tiempo: 1, dificultad: 3, incerteza: 1).
+      \item HU2: como Responsable, quiero simular los casos faltantes, para completar el set de datos de entrenamiento. Story points: 3 (tiempo: 1, dificultad: 1, incerteza: 1).
+      \item HU3: como Responsable, quiero desarrollar la herramienta para procesar archivos INPUT/OUTPUT de COBRA, para armar el set de datos. Story points: 8 (tiempo: 4, dificultad: 3, incerteza: 1).
       %\item HU4: como Usuario final, quiero que la forma de ingreso de los datos esté definida y sea simple de implementar, para poder utilizar la herramienta de forma sencilla.
     \end{itemize}
   \item \textbf{Épica 2: desarrollo de modelo de red neuronal convencional}
     \begin{itemize}
-      \item HU4: como Responsable, quiero probar distintas arquitecturas de red neuronal en base a los datos de simulaciones de COBRA, para obtener finalmente un modelo de red neuronal base funcional entregable.
-      \item HU5: como Usuario final, quiero tener un modelo básico con documentación de uso y métricas, para poder replicar los resultados que se obtienen con COBRA de forma más rápida y eficiente.
+      \item HU4: como Responsable, quiero probar distintas arquitecturas de red neuronal en base a los datos de simulaciones de COBRA, para obtener finalmente un modelo de red neuronal base funcional entregable. Story points: 21 (tiempo: 9, dificultad: 9, incerteza: 3).
+      \item HU5: como Usuario final, quiero tener un modelo básico con documentación de uso y métricas, para poder replicar los resultados que se obtienen con COBRA de forma más rápida y eficiente. Story points: 5 (tiempo: 1, dificultad: 3, incerteza: 3).
     \end{itemize}
   \item \textbf{Épica 3: análisis de embeddings y feature engineering para perfiles de potencia axiales y radiales}
     \begin{itemize}
-      \item HU6: como Reponsable, quiero implementar feature engineering y embeddings sobre los datos de entrada, para buscar mejorar las capacidades predictivas de la red neuronal base.
-      \item HU7: como Cliente, quiero obtener figuras de mérito de los perfiles de potencia y combinación de otras variables, para mejorar la propuesta de estrategias de recambio de combustibles.
+      \item HU6: como Reponsable, quiero implementar feature engineering y embeddings sobre los datos de entrada, para buscar mejorar las capacidades predictivas de la red neuronal base. Story points: 13 (tiempo: 3, dificultad: 7, incerteza: 3).
+      \item HU7: como Cliente, quiero obtener figuras de mérito de los perfiles de potencia y combinación de otras variables, para mejorar la propuesta de estrategias de recambio de combustibles. Story points: 13 (tiempo: 3, dificultad: 7, incerteza: 3).
     \end{itemize}
   \item \textbf{Épica 4: implementación de red neuronal informada por física}
     \begin{itemize}
-      \item HU8: como Responsable, quiero investigar y estudiar sobre redes neuronales informadas por física, para poder implementar dicho modelo.
-      \item HU9: como Cliente, quiero evaluar el impacto de utilizar redes neuronales informadas por física, para garantizar predicciones físicamente válidas.
+      \item HU8: como Responsable, quiero investigar y estudiar sobre redes neuronales informadas por física, para poder implementar dicho modelo. Story points: 21 (tiempo: 9, dificultad: 9, incerteza: 3).
+      \item HU9: como Cliente, quiero evaluar el impacto de utilizar redes neuronales informadas por física, para garantizar predicciones físicamente válidas. Story points: 13 (tiempo: 3, dificultad: 5, incerteza: 5).
     \end{itemize}
 \end{itemize}
 
-En el Cuadro \ref{tab:story_points} se tienen los story points y prioridad de cada historia de usuario, los cuales están basados en el criterio establecido por el Cuadro \ref{tab:criterio_story_points}.
+% En el Cuadro \ref{tab:story_points} se tienen los story points y prioridad de cada historia de usuario, que están basados en el criterio establecido por el Cuadro \ref{tab:criterio_story_points}.
 
-\begin{table}[hbt]
-  \centering
-  \begin{tabular}{c|c|c|c|c|c}
-    \hline
-    Nro. HU & \thead{Tiempo\\ requerido} & \thead{Dificultad/complejidad\\ de la tarea} & \thead{Incerteza \\y riesgo} & Story points & Prioridad \\ \hline
-    1 & Bajo & Media & Bajo & 5 & Alta\\ \hline
-    2 & Bajo & Bajo & Bajo & 3 & Media\\ \hline
-    3 & Medio & Medio & Bajo & 8 & Alta\\ \hline \hline
-    4 & Alto & Alto & Medio & 21 & Alta\\ \hline
-    5 & Bajo & Medio & Medio & 5 & Alta\\ \hline \hline
-    6 & Medio & Alta & Alta & 13 & Medio\\ \hline
-    7 & Medio & Alta & Alta & 13 & Baja\\ \hline \hline
-    8 & Alta & Alta & Alta & 21 & Media\\ \hline
-    9 & Media & Media & Alta & 8 & Media\\ \hline
+% \begin{table}[hbt]
+%   \centering
+%   \begin{tabular}{c|c|c|c|c|c}
+%     \hline
+%     Nro. HU & \thead{Tiempo\\ requerido} & \thead{Dificultad/complejidad\\ de la tarea} & \thead{Incerteza \\y riesgo} & Story points & Prioridad \\ \hline
+%     1 & Bajo & Media & Bajo & 5 & Alta\\ \hline
+%     2 & Bajo & Bajo & Bajo & 3 & Media\\ \hline
+%     3 & Medio & Medio & Bajo & 8 & Alta\\ \hline \hline
+%     4 & Alto & Alto & Medio & 21 & Alta\\ \hline
+%     5 & Bajo & Medio & Medio & 5 & Alta\\ \hline \hline
+%     6 & Medio & Alta & Alta & 13 & Medio\\ \hline
+%     7 & Medio & Alta & Alta & 13 & Baja\\ \hline \hline
+%     8 & Alta & Alta & Alta & 21 & Media\\ \hline
+%     9 & Media & Media & Alta & 8 & Media\\ \hline
     
-  \end{tabular}
-  \caption{Story points y prioridad de las historias de usuario.}
-  \label{tab:story_points}
-\end{table}
+%   \end{tabular}
+%   \caption{Story points y prioridad de las historias de usuario.}
+%   \label{tab:story_points}
+% \end{table}
 
-\begin{table}[hbt]
-  \centering
-  \begin{tabular}{c|c|c|c}
-    \hline
-    \thead{Tiempo\\ requerido} & \thead{Dificultad/complejidad\\ de la tarea} & \thead{Incerteza \\y riesgo} & Story points\\ \hline
-    Bajo        & Bajo        & Bajo        & 3\\ \hline 
-    Bajo        & Medio       & Bajo-Medio  & 5\\ \hline 
-    Medio       & Medio       & Medio       & 8\\ \hline 
-    Medio       & Alto        & Medio-Alto  & 13\\ \hline 
-    Alto        & Alto        & Medio-Alto  & 21\\ \hline 
-  \end{tabular}
-  \caption{Criterio de valor de story points.}
-  \label{tab:criterio_story_points}
-\end{table}
+% \begin{table}[hbt]
+%   \centering
+%   \begin{tabular}{c|c|c|c}
+%     \hline
+%     \thead{Tiempo\\ requerido} & \thead{Dificultad/complejidad\\ de la tarea} & \thead{Incerteza \\y riesgo} & Story points\\ \hline
+%     Bajo        & Bajo        & Bajo        & 3\\ \hline 
+%     Bajo        & Medio       & Bajo-Medio  & 5\\ \hline 
+%     Medio       & Medio       & Medio       & 8\\ \hline 
+%     Medio       & Alto        & Medio-Alto  & 13\\ \hline 
+%     Alto        & Alto        & Medio-Alto  & 21\\ \hline 
+%   \end{tabular}
+%   \caption{Criterio de valor de story points.}
+%   \label{tab:criterio_story_points}
+% \end{table}
 
 \section{7. Criterios de aceptación de historias de usuario}
 \label{sec:criteriosAceptacion}
@@ -269,66 +272,81 @@ A continuación se establecen los criterios de aceptación de cada historia de u
     \begin{itemize}
       \item HU1 - determinación del set de datos:
         \begin{itemize}
-          \item Realizar la búsqueda de datos disponible en el almacenamiento de la Gerencia.
-          \item Compilación de datos en un único directorio, con codificación de cada uno de forma clara.
-          \item Listado de datos disponibles y datos a simular.
+          % \item Realizar la búsqueda de datos disponible en el almacenamiento de la Gerencia.
+          \item Se dispone de un inventario documentado de todos los datos de simulaciones disponibles.
+          % \item Compilación de datos en un único directorio, con codificación de cada uno de forma clara.
+          \item Se tiene un documento con los casos ya simulados y aquellos que es necesario simular.
+          % \item Listado de datos disponibles y datos a simular.
         \end{itemize}
       \item HU2 - simulación de datos faltantes:
         \begin{itemize}
-          \item Simulación de todos los datos faltantes establecidos previamente con COBRA-3CP.
-          \item Almacenado de los archivos INPUT/OUTPUT, siguiendo reglas de codificación previamente establecidas.
+          \item Se tiene un script para generar los inputs de los casos faltantes y simularlos.
+          % \item Simulación de todos los datos faltantes establecidos previamente con COBRA-3CP.
+          \item Se dispone de un inventario con todos los casos necesarios.
+          % \item Almacenado de los archivos INPUT/OUTPUT, siguiendo reglas de codificación previamente establecidas.
         \end{itemize}
       \item HU3 - herramienta de procesamiento de archivos INPUT/OUTPUT:
         \begin{itemize}
-          \item Herramienta que permita procesar en batch archivos INPUT/OUTPUT, obteniendo un único archivo de fácil importación luego (p.e.: .csv, .json, .parquet, etc.).
-          \item Procesado de todos los datos almacenados y guardado en un archivo único (p.e.: .parquet).
+          \item Se tiene una herramienta que permita procesar en batch archivos INPUT/OUTPUT, obteniendo un único archivo de fácil importación luego (p.e.: .csv, .json, .parquet, etc.).
+          \item Se dispone de todos los datos almacenados en un único archivo.
+          % \item Procesado de todos los datos almacenados y guardado en un archivo único (p.e.: .parquet).
         \end{itemize}
     \end{itemize}
   \item \textbf{Épica 2: desarrollo de modelo de red neuronal convencional}
     \begin{itemize}
       \item HU4 - prueba de arquitectura de red neuronal:
         \begin{itemize}
-          \item Realizar y documentar pruebas de hiperparámetros, funciones de activación, etc. teniendo en cuenta métricas y análisis de sobreajuste.
+          \item Se tiene una Jupyter Notebook con todas las pruebas de hiperparámetros, funciones de activación, etc. probadas, con las métricas pertinentes graficadas.
+          % \item Realizar y documentar pruebas de hiperparámetros, funciones de activación, etc. teniendo en cuenta métricas y análisis de sobreajuste.
           % \item Obtener relación entre hiperparámetros, funciones de activación, etc. y precisión.
           % \item Análisis  posible sobreajuste del modelo.
-          \item Determinar la arquitectura óptima para el problema en cuestión.
+          \item Se tiene un modelo con la arquitectura óptima según la Notebook anterior.
+          % \item Determinar la arquitectura óptima para el problema en cuestión.
         \end{itemize}
       \item HU5 - modelo básico documentado:
         \begin{itemize}
-          \item Repositorio de github documentado del modelo final en python.
-          \item Documentación de la arquitectura del modelo y sus métricas.
-          % \item Justificación del porqué de la arquitectura, basado en lo probado en la HU anterior.
+          \item Se tiene un repositorio de github documentado del modelo final en python.
+          \item Se tiene un documento con el detalle de la arquitectura del modelo y sus métricas.
         \end{itemize}
     \end{itemize}
   \item \textbf{Épica 3: análisis de embeddings y feature engineering para perfiles de potencia axiales y radiales}
     \begin{itemize}
       \item HU6 - feature engineering y embeddings:
         \begin{itemize}
-          \item Implementación de embeddings para los perfiles de potencia.
-          \item Análisis de posible feature engineering: agregado de features que antes no se consideraban, descartado de features, análisis de dependencia, etc.
-          \item Definición de un modelo de red neuronal implementando lo anterior y comparación con modelo base.
+          \item Se tiene una Jupyter Notebook con una implementación básica de embeddings para los perfiles de potencia.
+          % \item Implementación de embeddings para los perfiles de potencia.
+          \item Se tiene una Jupyter Notebook con feature engineering, probando agregando y/o sacando features, analizando dependencia, etc.
+          % \item Análisis de posible feature engineering: agregado de features que antes no se consideraban, descartado de features, análisis de dependencia, etc.
+          \item Se dispone de una Jupytern Notebook con un modelo que implementa los embeddings y feature engineering, comparado con el modelo base de la HU5.
+          % \item Definición de un modelo de red neuronal implementando lo anterior y comparación con modelo base.
         \end{itemize}
       \item HU7 - figuras de mérito:
         \begin{itemize}
-          \item Análisis de los embeddings una vez entrenados, en particular si representan características puntuales de los perfiles de potencia.
-          \item Definición de figuras de mérito de los perfiles de potencia en base a los embeddings y feature engineering.
+          % \item Análisis de los embeddings una vez entrenados, en particular si representan características puntuales de los perfiles de potencia.
+          \item Se tiene una Jupyter Notebook donde se analiza si los embeddings entrenados en la HU6 representan características puntuales de los perfiles de potencia.
+          % \item Definición de figuras de mérito de los perfiles de potencia en base a los embeddings y feature engineering.
+          \item Se tiene un documento donde se explican figuras de mérito de los perfiles de potencia en función de los embeddings y feature engineering realizados.
         \end{itemize}
     \end{itemize}
   \item \textbf{Épica 4: implementación de red neuronal informada por física}
     \begin{itemize}
       \item HU8 - estudio redes neuronales informadas por física:
         \begin{itemize}
-          \item Cursado de la materia ``Redes Neuronales Informadas por Física" de la CEIA.
-          \item Estudio del estado del arte en papers y libros.
-          \item Estudio de herramientas pre-codificadas (paquetes de python).
-          \item Implementación de casos simples de bibliografía.
+          \item Se tiene aprobada la materia ``Redes Neuronales Informadas por Física" de la CEIA.
+          % \item Estudio del estado del arte en papers y libros.
+          % \item Estudio de herramientas pre-codificadas (paquetes de python).
+          \item Se dispone de una Jupyter Notebook con implementación de casos simples de bibliografía.
         \end{itemize}
       \item HU9 - implementación redes neuronales informadas por física:
         \begin{itemize}
-          \item Definición de las ecuaciones a implementar en el modelo.
-          \item Implementación de la red neuronal informada por física.
-          \item Análisis de hiperparámetros y métricas.
-          \item Definición de modelo informado por física final y comparativa con modelos previos.
+          \item Se tiene un documento con las ecuaciones a implementar en el modelo desarolladas.
+          \item Se dispone de una Jupyter Notebook con una implementación de una red neuronal informada por física.
+          \item Se tiene una Jupyter Notebook con el análisis de hiperparámetros y métricas de la PINN.
+          \item Se tiene una Jupyter Notebook con un modelo de PINN, comparado con los modelos definidos en la HU5 y la HU6.
+          % \item Definición de las ecuaciones a implementar en el modelo.
+          % \item Implementación de la red neuronal informada por física.
+          % \item Análisis de hiperparámetros y métricas.
+          % \item Definición de modelo informado por física final y comparativa con modelos previos.
         \end{itemize}
     \end{itemize}
 \end{itemize}
@@ -364,17 +382,20 @@ A continuación se establecen los criterios de aceptación de cada historia de u
     \end{itemize}
 \end{enumerate}
 
+\newpage
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-A continuación, en la Tabla \ref{tab:tareas_por_hu}, se describen las tareas necesarias de cada historia de usuario.
+A continuación, en el Cuadro \ref{tab:tareas_por_hu}, se describen las tareas necesarias de cada historia de usuario.
 
 \begin{longtable}{|p{4cm}|p{6cm}|c|c|}
 \caption{Desglose de tareas por historia de usuario.}
 \label{tab:tareas_por_hu} \\
 \hline
+\rowcolor[HTML]{C0C0C0}
 Historia de usuario & Tarea técnica & Estimación & Prioridad \\ \hline \endfirsthead
 \multicolumn{4}{c}{{Continuación de anterior página}} \\
+\rowcolor[HTML]{C0C0C0}
 Historia de usuario & Tarea técnica & Estimación & Prioridad \\ \hline
 \endhead
 \hline \multicolumn{4}{|r|}{{Continúa en próxima página}} \\ \hline
@@ -382,208 +403,316 @@ Historia de usuario & Tarea técnica & Estimación & Prioridad \\ \hline
 \hline \hline
 \endlastfoot
 
-\multirow{3}{4cm}{HU1 - determinación del set de datos}  
-  & 1.1: Recopilación de datos de simulaciones de COBRA para estrategias de combustibles & 3 h & Alta \\* \cline{2-4}
-  \nopagebreak & 1.2: Documentación de casos contemplados por las simulaciones ya hechas y cataloguización de los mismos. & 1 h & Alta \\* \cline{2-4}
-  & 1.3: Definición de datos de simulaciones faltantes. & 1 h & Alta \\ \hline
+\multirow{3}{4cm}{HU1 - Determinación del set de datos}  
+  & 1.1: Recopilación de datos de simulaciones de COBRA para estrategias de combustibles. & 9 h & Alta \\* \cline{2-4}
+  \nopagebreak & 1.2: Documentación de casos contemplados por las simulaciones ya hechas y cataloguización de los mismos. & 7 h & Alta \\* \cline{2-4}
+  & 1.3: Definición de datos de simulaciones faltantes. & 3 h & Alta \\ \hline
 
-\multirow{3}{4cm}{HU2 - simulación de datos faltantes}  
-  & 2.1: Armado de INPUTS sobre casos faltantes & 5 h & Media \\* \cline{2-4}
-  & 2.2: Simulación de casos faltantes & 10 h & Media \\* \cline{2-4}
-  & 2.3: Almacenado y cataloguización de salidas de las simulaciones & 1 h & Media \\ \hline
+\multirow{4}{4cm}{HU2 - Simulación de datos faltantes}  
+  & 2.1: Desarrollo de herramienta para automatización de generación de INPUTS. & 10 h & Media \\* \cline{2-4}
+  & 2.2: Armado de INPUTS sobre casos faltantes. & 8 h & Media \\* \cline{2-4}
+  & 2.3: Simulación de casos faltantes. & 6 h & Media \\* \cline{2-4}
+  & 2.4: Almacenado y cataloguización de salidas de las simulaciones. & 3 h & Media \\ \hline
 
-\pagebreak
-\multirow{2}{4cm}{HU3 - herramienta de procesamiento de archivos de INPUT/OUTPUT}  
-  & 3.1: Desarrollo de herramienta para procesamiento de archivos de INPUT/OUTPUT & 6 h & Alta \\* \cline{2-4}
-  & 3.2: Procesado de archivos de INPUT/OUTPUT & 3 h & Alta \\ \hline
+\multirow{2}{4cm}{HU3 - Herramienta de procesamiento de archivos de INPUT/OUTPUT}  
+  & 3.1: Desarrollo de herramienta para procesamiento de archivos de INPUT/OUTPUT. & 12 h & Alta \\* \cline{2-4}
+  & 3.2: Procesado de archivos de INPUT/OUTPUT. & 4 h & Alta \\ \hline
 
-\multirow{4}{4cm}{HU4 - prueba de arquitectura de red neuronal} 
-  & 4.1: Armado de estructura base sobre la que realizar pruebas & 4 h & Alta \\* \cline{2-4}   
-  & 4.2: Realizado de pruebas de arquitectura de la red neuronal & 12 h & Alta \\* \cline{2-4}
-  & 4.3: Graficado de métricas y comparativa entre arquitecturas & 3 h & Alta \\* \cline{2-4}
-  & 4.4: Definición de arquitectura final & 1 h & Alta \\ \hline
+\multirow{4}{4cm}{HU4 - Prueba de arquitectura de red neuronal} 
+  & 4.1: Armado de estructura base sobre la que realizar pruebas. & 8 h & Alta \\* \cline{2-4}   
+  & 4.2: Realizado de pruebas de funciones de activación de la red neuronal. & 8 h & Alta \\* \cline{2-4}
+  & 4.3: Realizado de pruebas de hiperparámetros de la red neuronal. & 8 h & Alta \\* \cline{2-4}
+  & 4.4: Graficado de métricas y comparativa entre arquitecturas. & 6 h & Alta \\* \cline{2-4}
+  & 4.5: Definición de arquitectura final. & 4 h & Alta \\ \hline
 
-\multirow{3}{4cm}{HU5 - modelo básico documentado}  
-  & 5.1: Documentado de resultados de pruebas de arquitectura & 3 h & Alta \\* \cline{2-4}
-  & 5.2: Documentado de arquitectura final de red neuronal & 2 h & Alta \\* \cline{2-4}
-  & 5.3: Armado de versión entrenada en github del modelo & 2 h & Alta \\ \hline
-
-\multirow{8}{4cm}{HU6 - feature engineering y embeddings}  
-  & 6.1: Definición de nuevas features derivadas para probar su efecto & 2 h & Alta \\* \cline{2-4}
-  & 6.2: Pruebas de nuevas features & 6 h & Alta \\* \cline{2-4}
-  & 6.3: Armado de estructura base para entrenar embeddings & 4 h & Alta \\* \cline{2-4}
-  & 6.4: Prueba de entrenamientos de embeddings de los perfiles de potencia axial y radial & 10 h & Alta \\* \cline{2-4}
-  & 6.5: Análisis de diferencias en los perfiles según valores de embeddings & 3 h & Alta \\* \cline{2-4}
-  & 6.6: Prueba de modelo con embeddings y nuevas features & 10 h & Alta \\* \cline{2-4}
-  & 6.7: Definición de nuevo modelo incorporando embeddings y nuevas features & 3 h & Alta \\* \cline{2-4}
-  & 6.8: Comparativa de performance contra modelo base de red neuronal & 3 h & Alta \\ \hline
-
-\multirow{2}{4cm}{HU7 - figuras de mérito}  
-  & 7.1: Análisis de figuras de mérito en función de los embeddings entrenados y su relación con las PLC & 6 h & Baja \\* \cline{2-4}
-  & 7.2: Documentación de efecto de las figuras de mérito en las PLC  & 2 h & Baja \\ \hline
-
-\multirow{3}{4cm}{HU8 - estudio de redes neuronales informadas por física}  
-  & 8.1: Cursado de materia ``Redes Neuronales Informadas por Física" & 24 h & Media \\* \cline{2-4}
-  & 8.2: Lectura del estado del arte & 6 h & Media \\* \cline{2-4}
-  & 8.3: Aplicación de ejemplos básicos de redes neuronales informadas por física & 4 h & Media \\ \hline
+\multirow{3}{4cm}{HU5 - Modelo básico documentado}  
+  & 5.1: Documentado de resultados de pruebas de arquitectura. & 6 h & Alta \\* \cline{2-4}
+  & 5.2: Documentado de arquitectura final de red neuronal. & 6 h & Alta \\* \cline{2-4}
+  & 5.3: Armado de versión entrenada en github del modelo. & 3 h & Alta \\ \hline
 
 \pagebreak
-\multirow{6}{4cm}{HU9 - implementación de redes neuronales informadas por física}  
-  & 9.1: Definición de las ecuaciones a aplicar en el modelo  & 3 h & Media \\* \cline{2-4}
-  & 9.2: Armado de modelo base de red neuronal informada por física con las ecuaciones definidas & 6 h & Media \\* \cline{2-4}
-  & 9.3: Análisis de hiperparámetros y arquitecturas & 10 h & Media \\* \cline{2-4}
-  & 9.4: Definición de red neuronal informada por física final & 2 h & Media \\* \cline{2-4}
-  & 9.5: Comparativa de performance contra modelos previamente desarrollados & 3 h & Media \\* \cline{2-4}
-  & 9.6: Documentación final de modelo final de red neuronal informada por física & 2 h & Media \\ \hline
+
+\multirow{8}{4cm}{HU6 - Feature engineering y embeddings}  
+  & 6.1: Definición de nuevas features derivadas para probar su efecto. & 12 h & Alta \\* \cline{2-4}
+  & 6.2: Pruebas de nuevas features. & 12 h & Alta \\* \cline{2-4}
+  & 6.3: Armado de estructura base para entrenar embeddings. & 8 h & Alta \\* \cline{2-4}
+  & 6.4: Prueba de entrenamientos de embeddings de los perfiles de potencia axial. & 8 h & Alta \\* \cline{2-4}
+  & 6.5: Prueba de entrenamientos de embeddings de los perfiles de potencia radial. & 8 h & Alta \\* \cline{2-4}
+  & 6.6: Análisis de diferencias en los perfiles según valores de embeddings. & 6 h & Alta \\* \cline{2-4}
+  & 6.7: Prueba de modelo con embeddings y nuevas features. & 8 h & Alta \\* \cline{2-4}
+  & 6.8: Definición de nuevo modelo incorporando embeddings y nuevas features. & 6 h & Alta \\* \cline{2-4}
+  & 6.9: Comparativa de performance contra modelo base de red neuronal. & 4 h & Alta \\ \hline
+
+\multirow{2}{4cm}{HU7 - Figuras de mérito}  
+  & 7.1: Análisis de figuras de mérito en función de los embeddings entrenados y su relación con las PLC. & 12 h & Baja \\* \cline{2-4}
+  & 7.2: Documentación de efecto de las figuras de mérito en las PLC. & 4 h & Baja \\ \hline
+
+\multirow{3}{4cm}{HU8 - Estudio de redes neuronales informadas por física}  
+  & 8.1: Cursado de materia ``Redes Neuronales Informadas por Física". & 48 h & Media \\* \cline{2-4}
+  & 8.2: Lectura del estado del arte. & 12 h & Media \\* \cline{2-4}
+  & 8.3: Aplicación de ejemplos básicos de redes neuronales informadas por física. & 12 h & Media \\ \hline
+
+\pagebreak
+
+\multirow{7}{4cm}{HU9 - Implementación de redes neuronales informadas por física}  
+  & 9.1: Recopilación de ecuaciones de balance utilizadas por COBRA. & 12 h & Media \\* \cline{2-4}
+  & 9.2: Definición de las ecuaciones a aplicar en el modelo. & 8 h & Media \\* \cline{2-4}
+  & 9.3: Armado de modelo base de red neuronal informada por física con las ecuaciones definidas. & 8 h & Media \\* \cline{2-4}
+  & 9.4: Análisis de arquitecturas. & 8 h & Media \\* \cline{2-4}
+  & 9.5: Análisis de hiperparámetros. & 8 h & Media \\* \cline{2-4}
+  & 9.6: Definición de red neuronal informada por física final. & 4 h & Media \\* \cline{2-4}
+  & 9.7: Comparativa de performance contra modelos previamente desarrollados. & 4 h & Media \\* \cline{2-4}
+  & 9.8: Documentación final de modelo final de red neuronal informada por física. & 4 h & Media \\ \hline
 \end{longtable}
 
 
-
+\newpage
 \section{10. Planificación de Sprints}
 
-\begin{consigna}{red}
+En el Cuadro \ref{tab:tareas} se tiene la planificación de Sprints en función de las tareas definidas previamente.
 
-Organizar las tareas técnicas del proyecto en sprints de trabajo que permitan distribuir de forma equilibrada la carga horaria total, estimada en 600 horas.
-
-\textbf{Consigna:}
-\begin{itemize}
-  \item Completar una tabla que relacione sprints con HU y tareas técnicas correspondientes.
-  \item Incluir estimación en horas para cada tarea.
-  \item Indicar responsable y porcentaje de avance estimado o completado.
-  \item Contemplar también tareas de planificación, documentación, redacción de memoria y preparación de defensa.
-\end{itemize}
-
-\textbf{Conceptos clave:}
-\begin{itemize}
-  \item Una \'{e}pica es una unidad funcional amplia; una historia de usuario es una funcionalidad concreta; un sprint es una unidad de tiempo donde se ejecutan tareas.
-  \item Las tareas son el nivel más desagregado: permiten estimar tiempos, asignar responsables y monitorear progreso.
-\end{itemize}
-
-\textbf{Duración sugerida:}
-\begin{itemize}
-  \item Para un proyecto de 600 h, se recomienda planificar entre 10 y 12 sprints de aproximadamente 2 semanas cada uno.
-  \item Asignar entre 45 y 50 horas efectivas por sprint a tareas técnicas.
-  \item Reservar 100 a 120 h para actividades no técnicas (planificación, escritura, reuniones, defensa).
-\end{itemize}
-
-\textbf{Importante:}
-\begin{itemize}
-  \item En proyectos individuales, el responsable suele ser el propio autor.
-  \item Aun así, desagregar tareas facilita el seguimiento y mejora continua.
-\end{itemize}
-
-\textbf{Conversión opcional de Story Points a horas:}
-\begin{itemize}
-  \item 1 SP \(\approx\) 2 h como referencia flexible.
-  \item Tener en cuenta aproximaciones tipo Fibonacci.
-\end{itemize}
-
-\begin{table}[htpb]
-\centering
-\caption{Formato sugerido}
-\begin{tabularx}{\linewidth}{@{}|l|l|X|c|l|c|@{}}
+\begin{longtable}{|l|l|p{3cm}|p{1cm}|p{2cm}|c|}
+\caption{Planificación de Sprints.}
+\label{tab:tareas} \\
 \hline
 \rowcolor[HTML]{C0C0C0}
+Sprint & HU o fase & Tarea & Horas / SP & Responsable & \% Completado \\ \hline \endfirsthead
+\multicolumn{6}{c}{{Continuación de anterior página}} \\
+\rowcolor[HTML]{C0C0C0}
 Sprint & HU o fase & Tarea & Horas / SP & Responsable & \% Completado \\ \hline
-Sprint 0 & Planificación & Definir alcance y cronograma & 10 h & Alumno & 100\% \\ \hline
-Sprint 0 & Planificación & Reunión con el tutor/cliente & 5 h & Alumno & 50\% \\ \hline
-Sprint 0 & Planificación & Ajuste de los entregables & 6 h & Alumno & 25\% \\ \hline
-Sprint 1 & HU1 & Tarea 1 HU1 & 6 h / 3 SP & Alumno & 0\% \\ \hline
-Sprint 1 & HU1 & Tarea 2 HU1 & 10 h / 5 SP & Alumno & 0\% \\ \hline
-Sprint 2 & HU2 & Tarea 1 HU2 & 7 h / 5 SP & Alumno & 0\% \\ \hline
-... & ... & ... & ... & ... & ... \\ \hline
-Sprint 5 & Escritura & Redacción memoria & 50 h / 34 SP & Alumno & 0\% \\ \hline
-Sprint 6 & Defensa & Preparación de la exposición & 20 h / 13 SP & Alumno & 0\% \\ \hline
-\end{tabularx}
-\end{table}
+\endhead
+\hline \multicolumn{6}{|r|}{{Continúa en próxima página}} \\ \hline
+\endfoot
+\hline \hline
+\endlastfoot
 
-\textbf{Recomendaciones:}
-\begin{itemize}
-  \item Verificar que la carga horaria por sprint sea equilibrada.
-  \item Usar sprints de 1 a 3 semanas, acordes al cronograma general.
-  \item Actualizar el \% completado durante el seguimiento del proyecto.
-  \item Considerar un sprint final exclusivo para pruebas, revisión y ajustes antes de la defensa.
-\end{itemize}
+\multirow{4}{*}{Sprint 0} 
+ & Planificación & Def. alcance y cronograma & 10 h & Alumno y Director & 100\% \\ \cline{2-6} 
+ & Planificación & Reuniones & 5 h & Alumno y Director & 100\% \\ \cline{2-6} 
+ & Planificación & Ajuste Engregables & 6 h & Alumno y Director & 50\% \\ \cline{2-6} 
+ & \multicolumn{5}{|c|}{Total: 21 h} \\ \hline \hline
 
-\end{consigna}
+\multirow{9}{*}{Sprint 1} 
+ & HU1 & Tarea 1 & 9 h & Alumno y Director            & 0\% \\ \cline{2-6} 
+ & HU1 & Tarea 2 & 7 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU1 & Tarea 3 & 3 h & Alumno y Director            & 0\% \\ \cline{2-6}
+ & HU2 & Tarea 1 & 10 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU8 & Tarea 1 & 12 h & Alumno                       & 0\% \\ \cline{2-6}
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 4 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 51 h} \\ \hline \hline
+
+\multirow{9}{*}{Sprint 2} 
+ & HU2 & Tarea 2 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU2 & Tarea 3 & 6 h & Alumno                       & 0\% \\ \cline{2-6}
+ & HU2 & Tarea 4 & 3 h & Alumno                       & 0\% \\ \cline{2-6}
+ & HU3 & Tarea 1 & 12 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU8 & Tarea 1 & 12 h & Alumno                       & 0\% \\ \cline{2-6}
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 4 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 51 h} \\ \hline \hline
+
+\multirow{8}{*}{Sprint 3} 
+ & HU3 & Tarea 2 & 4 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU4 & Tarea 1 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU4 & Tarea 2 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU4 & Tarea 3 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU8 & Tarea 1 & 12 h & Alumno                      & 0\% \\ \cline{2-6}
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 4 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 50 h} \\ \hline \hline
+
+\pagebreak
+
+\multirow{10}{*}{Sprint 4} 
+ & HU4 & Tarea 4 & 6 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU4 & Tarea 5 & 4 h & Alumno y Director            & 0\% \\ \cline{2-6}
+ & HU5 & Tarea 1 & 6 h & Alumno                       & 0\% \\ \cline{2-6}
+ & HU5 & Tarea 2 & 6 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU5 & Tarea 3 & 3 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU6 & Tarea 1 & 6 h & Alumno                       & 0\% \\ \cline{2-6}
+ & HU8 & Tarea 1 & 12 h & Alumno                       & 0\% \\ \cline{2-6}
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 8 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 57 h} \\ \hline \hline
+
+\multirow{7}{*}{Sprint 5} 
+ & HU6 & Tarea 2 & 12 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU6 & Tarea 3 & 12 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU6 & Tarea 4 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU6 & Tarea 5 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 8 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 54 h} \\ \hline \hline
+
+\multirow{9}{*}{Sprint 6} 
+ & HU6 & Tarea 6 & 6 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU6 & Tarea 7 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU6 & Tarea 8 & 6 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU6 & Tarea 9 & 4 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU7 & Tarea 1 & 12 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU7 & Tarea 2 & 4 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 20 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 66 h} \\ \hline \hline
+
+\multirow{6}{*}{Sprint 7} 
+ & HU8 & Tarea 2 & 12 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU8 & Tarea 3 & 12 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU9 & Tarea 1 & 12 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 20 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 62 h} \\ \hline \hline
+
+\pagebreak
+
+\multirow{7}{*}{Sprint 8} 
+ & HU9 & Tarea 2 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU9 & Tarea 3 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU9 & Tarea 4 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU9 & Tarea 5 & 8 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 30 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 68 h} \\ \hline \hline
+
+\multirow{6}{*}{Sprint 9} 
+ & HU9 & Tarea 6 & 4 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU9 & Tarea 7 & 4 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & HU9 & Tarea 8 & 4 h & Alumno                       & 0\% \\ \cline{2-6} 
+ & Planificación & Reuniones & 6 h & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 40 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 58h} \\ \hline \hline
+
+\multirow{4}{*}{Sprint 10} 
+ & Planificación & Reuniones & 6 & Alumno y Director  & 0\% \\ \cline{2-6}
+ & Escritura & Redacción memoria & 30 & Alumno         & 0\% \\ \cline{2-6}
+ & Defensa & Preparación & 20 h & Alumno         & 0\% \\ \cline{2-6}
+ & \multicolumn{5}{|c|}{Total: 56 h} \\ \hline \hline
+
+\end{longtable}
 
 \section{11. Diagrama de Gantt (sprints)}
 \label{sec:gantt}
 
-\begin{consigna}{red}
+En la Figura \ref{fig:gantt} se tiene el Diagrama de Gantt del proyecto.
 
-Visualizar en un diagrama de Gantt la planificación temporal del proyecto, tomando como base los sprints definidos en la sección anterior. Debe contemplar todas las horas del proyecto.
+\begin{landscape}
+\begin{figure}[hbt]
+  \caption{Diagrama de Gantt del proyecto.}
+  \label{fig:gantt}
+  \begin{ganttchart}[
+    hgrid,
+    x unit=1.35mm,
+    y unit chart=0.32cm,
+    y unit title=0.6cm,
+    time slot format=isodate,
+    bar/.append style={fill=blue},
+  ]{2026-04-15}{2026-09-15}
+    \gantttitlecalendar{month} \\
 
-Consigna:
+    \ganttgroup{Sprint 0}{2026-04-15}{2026-04-26} \\ 
+      \ganttbar[bar/.append style={fill=red}]{Def. alcance}{2026-04-15}{2026-04-26} \\ 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{Reuniones}{2026-04-15} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-04-21}
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-04-27} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-05-04} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-05-11} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-05-18} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-05-25} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-06-01} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-06-08} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-06-15} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-06-22} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-06-29} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-07-06} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-07-13} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-07-20} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-07-27} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-08-03} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-08-10} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-08-17} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-08-24} 
+      \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-08-31} \ganttmilestone[milestone/.append style={fill=red, draw=red}]{}{2026-09-07} 
+      \\ 
 
-\begin{itemize}
+    \ganttgroup{Sprint 1}{2026-04-27}{2026-05-10} \\ 
+      \ganttbar{Tarea 8.1}{2026-04-27}{2026-06-19} \\ 
+      \ganttbar{HU1}{2026-04-27}{2026-05-01} \\ 
+      \ganttlinkedbar{HU2.1}{2026-05-02}{2026-05-04} \\
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-05-05}{2026-05-07} \\
 
-\item Elaborar un diagrama de Gantt que muestre la secuencia temporal de los sprints.
+    \ganttgroup{Sprint 2}{2026-05-11}{2026-05-24} \\ 
+      \ganttbar{HU2.2-2.4}{2026-05-11}{2026-05-14} \\
+      \ganttlink{elem27}{elem30}
+      \ganttbar{HU3.1}{2026-05-15}{2026-05-18} \\
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-05-19}{2026-05-21} \\
 
-\item Cada fila debe representar un sprint (con su número o nombre), y el eje horizontal debe indicar el tiempo (en semanas o fechas concretas).
+    \ganttgroup{Sprint 3}{2026-05-25}{2026-06-07} \\ 
+      \ganttbar{HU3.2}{2026-05-25}{2026-05-26} \\
+      \ganttlink{elem31}{elem34}
+      \ganttlinkedbar{HU4.1-4.3}{2026-05-27}{2026-05-31} \\
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-06-01}{2026-06-03} \\
 
-\item Las tareas técnicas derivadas de HU deben diferenciarse visualmente (por ejemplo, con un color distinto) de las tareas no técnicas (planificación, redacción, defensa).
+    \ganttgroup{Sprint 4}{2026-06-08}{2026-06-21} \\ 
+      \ganttbar{HU4.4-4.5}{2026-06-08}{2026-06-10} \\
+      \ganttlink{elem35}{elem38}
+      \ganttlinkedbar{HU5}{2026-06-11}{2026-06-15} \\
+      \ganttlinkedmilestone[milestone/.append style={fill=blue, draw=blue}]{Modelo base}{2026-06-15} \\
+      \ganttbar{HU6.1}{2026-06-16}{2026-06-17} \\
+      \ganttlink{elem38}{elem41}
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-06-17}{2026-06-20} \\
 
-\item Incluir todas las tareas estimadas en cada sprint.
-\end{itemize}
+    \ganttgroup{Sprint 5}{2026-06-22}{2026-07-05} \\ 
+      \ganttbar{HU6.2-6.5}{2026-06-22}{2026-07-02} \\
+      \ganttlink{elem41}{elem44}
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-07-02}{2026-07-05} \\
 
-Recomendaciones para el Gantt:
+      % \ganttlinkedbar{Tarea 1.2}
+    \ganttgroup{Sprint 6}{2026-07-06}{2026-07-19} \\ 
+      \ganttbar{HU6.6-6.9}{2026-07-06}{2026-07-10} \\
+      \ganttlink{elem44}{elem47}
+      \ganttlinkedmilestone[milestone/.append style={fill=blue, draw=blue}]{Modelo con embeddings}{2026-07-10} \\
+      \ganttlinkedbar{HU7}{2026-07-11}{2026-07-15} \\
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-07-10}{2026-07-19} \\
 
-\begin{itemize}
+    \ganttgroup{Sprint 7}{2026-07-20}{2026-08-02} \\ 
+      \ganttbar{HU8.2-8.3}{2026-07-20}{2026-07-24} \\
+      \ganttlink{elem25}{elem52}
+      \ganttbar{HU9.1}{2026-07-24}{2026-07-26} \\
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-07-25}{2026-08-02} \\
 
-	\item Podés usar herramientas gratuitas como TeamGantt, ClickUp, GanttProject, [Google Sheets], [Trello + Planyway], entre otras.
-	\item Ordená los sprints de forma cronológica, comenzando con Sprint 0 (planificación) y finalizando con el sprint de defensa.
-	\item Asegurate de reflejar la duración realista de cada sprint según tu disponibilidad y el cronograma general del posgrado.
-	\item Incluí hitos importantes: reuniones, entregas parciales, defensa.
-\end{itemize}
+    \ganttgroup{Sprint 8}{2026-08-03}{2026-08-16} \\ 
+      \ganttbar{HU9.2-9.5}{2026-08-03}{2026-08-12} \\
+      \ganttlink{elem52}{elem56}
+      \ganttlink{elem53}{elem56}
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-08-03}{2026-08-16} \\
 
+    \ganttgroup{Sprint 9}{2026-08-17}{2026-08-30} \\ 
+      \ganttbar{HU9.6-9.8}{2026-08-17}{2026-08-20} \\
+      \ganttlink{elem56}{elem59}
+      \ganttlinkedmilestone[milestone/.append style={fill=blue, draw=blue}]{Modelo PINN}{2026-08-20} \\
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-08-17}{2026-08-30} \\
+    
+    \ganttgroup{Sprint 10}{2026-08-31}{2026-09-13} \\ 
+      \ganttbar[bar/.append style={fill=red}]{Escritura}{2026-08-31}{2026-09-05} \\
+      \ganttbar[bar/.append style={fill=red}]{Defensa}{2026-09-05}{2026-09-13} \\
+      \ganttlinkedmilestone[]{Defensa TPF}{2026-09-14} \\
 
-Incluir una imagen legible del diagrama de Gantt. Si es muy ancho, presentar primero la tabla y luego el gráfico de barras.
-
-\end{consigna}
+    \ganttvrule{}{2026-04-26}
+    \ganttvrule{}{2026-05-10}
+    \ganttvrule{}{2026-05-24}
+    \ganttvrule{}{2026-06-07}
+    \ganttvrule{}{2026-06-21}
+    \ganttvrule{}{2026-07-05}
+    \ganttvrule{}{2026-07-19}
+    \ganttvrule{}{2026-08-02}
+    \ganttvrule{}{2026-08-16}
+    \ganttvrule{}{2026-08-30}
+    \ganttvrule{}{2026-09-13}
+  \end{ganttchart}
+\end{figure}
+\end{landscape}
 
 \section{12. Gobernanza de datos}
 \label{sec:gobernanza}
 
-\begin{consigna}{red}
+El proyecto utiliza datos provenientes de simulaciones con el código COBRA-3CP, propiedad del cliente \empclientename{}. Estos datos contienen información condfidencial respecto del diseño de la \CNA{}, sujetos a consideraciones legales.
 
-En esta sección se debe analizar de manera integral el marco normativo y ético asociado al uso de los datos y al desarrollo de soluciones basadas en inteligencia artificial.
-
-El análisis se divide en dos partes:
-
+\textbf{Aspectos considerados:}
 \begin{itemize}
-  \item Cumplimiento normativo.
-  \item Ética en el uso de inteligencia artificial.
+  \item Se filtraran los datos del diseño que no sean pertinentes al entrenamiento en el armado del dataset a partir de los OUTPUT de COBRA.
+  \item No se guardarán en repositorios públicos información respecto del diseño o la operación de la \CNA{}.
 \end{itemize}
-
-\subsection{Cumplimiento normativo}
-Este análisis es clave para garantizar el cumplimiento normativo y evitar conflictos legales durante el desarrollo y publicación del proyecto.
-
-En esta subsección se debe identificar si los datos utilizados en el proyecto están sujetos a normativas de protección de datos y privacidad, y en qué condiciones pueden emplearse.
-
-Aspectos a considerar:
-
-\begin{itemize}
-  \item Determinar si los datos están regulados por normativas como el GDPR, la Ley 25.326 de Protección de Datos Personales (Argentina), la HIPAA u otras, según la jurisdicción o la temática del proyecto.
-  \item Aclarar si las fuentes de datos son propias, de acceso público o licenciadas. En este último caso, explicitar la licencia correspondiente y sus condiciones de uso. Realizar este mismo análisis para las herramientas y, en caso de corresponder, para los modelos preentrenados a emplear.
-  \item Analizar la viabilidad legal del proyecto, considerando los mecanismos necesarios para garantizar el cumplimiento normativo y la trazabilidad de los datos.
-\end{itemize}
-
-\subsection{Ética en el uso de inteligencia artificial}
-
-En esta subsección se debe reflexionar sobre los aspectos éticos vinculados al uso de datos y algoritmos de inteligencia artificial. Se espera una evaluación de la integridad del sistema y su impacto social.
-
-Aspectos a considerar:
-
-\begin{itemize}
-	\item Identificar posibles sesgos en los datos o modelos (ideológicos, culturales, de género, geográficos, etc.) y analizar sus consecuencias (por ejemplo: discriminación, manipulación, pérdida de privacidad o desinformación).
-	\item Analizar los posibles riesgos en términos de impacto social del uso indebido de la solución a desarrollar.
-	\item En caso de corresponder, proponer medidas de mitigación y mecanismos de confianza (auditorías, documentación, trazabilidad, revisión humana, etc.).
-	\item Finalmente, elaborar una reflexión general sobre la ética del proyecto, considerando tanto la equidad y transparencia del sistema como su impacto potencial en la sociedad.
-
-\end{itemize}
-
-\end{consigna}
 
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
