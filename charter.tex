@@ -37,7 +37,7 @@
  
 \fechaINICIO{3 de marzo de 2026}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlan{21 de abril de 2026} 	%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{1 de diciembre de 2026}	%Fecha de defensa pública del trabajo final
+\fechaFINALTrabajo{diciembre de 2026}	%Fecha de defensa pública del trabajo final
 
 \newcommand{\CNA}{Central Nuclear Atucha II}
 
@@ -70,6 +70,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1      & Se completa hasta el punto 5 inclusive                & 15 de marzo de 2026 \\ \hline
 2      & Se completa hasta el punto 9 inclusive                & 22 de marzo de 2026 \\ \hline
 3      & Se completa hasta el punto 12 inclusive               & 30 de marzo de 2026 \\ \hline
+4      & Se completa hasta el punto 15 inclusive               & 4 de abril de 2026 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
@@ -94,7 +95,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el \authorname{} que su Trabajo Final de la \degreename{} se titulará ``\ttitle'' y consistirá en la implementación de un modelo de aprendizaje profundo para cálculo de potencia límite de canal. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de \$6.250.000,00, con fecha de inicio el \fechaInicioName{} y fecha de presentación pública el \fechaFinalName{}.
+Por medio de la presente se acuerda con el \authorname{} que su Trabajo Final de la \degreename{} se titulará ``\ttitle'' y consistirá en la implementación de un modelo de aprendizaje profundo para cálculo de potencia límite de canal. El trabajo tendrá un presupuesto preliminar estimado de 600 horas y un costo estimado de \$6.250.000,00, con fecha de inicio el \fechaInicioName{} y fecha de presentación pública en \fechaFinalName{}.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -205,7 +206,7 @@ A continuación se describen las épicas e historias de usuario de cada épica:
     \begin{itemize}
       \item HU1: como Responsable, quiero determinar, en conjunto con el Director, el set de datos a adquirir, determinando qué casos ya están simulados y aquellos que deben ser simulados, para poder procesar los datos de forma acorde a su posterior utilización. Story points: 5 (tiempo: 1, dificultad: 3, incerteza: 1).
       \item HU2: como Responsable, quiero simular los casos faltantes, para completar el set de datos de entrenamiento. Story points: 3 (tiempo: 1, dificultad: 1, incerteza: 1).
-      \item HU3: como Responsable, quiero desarrollar la herramienta para procesar archivos INPUT/OUTPUT de COBRA, para armar el set de datos. Story points: 8 (tiempo: 4, dificultad: 3, incerteza: 1).
+      \item HU3: como Responsable, quiero desarrollar la herramienta para procesar archivos OUTPUT de COBRA, para armar el set de datos. Story points: 8 (tiempo: 4, dificultad: 3, incerteza: 1).
       %\item HU4: como Usuario final, quiero que la forma de ingreso de los datos esté definida y sea simple de implementar, para poder utilizar la herramienta de forma sencilla.
     \end{itemize}
   \item \textbf{Épica 2: desarrollo de modelo de red neuronal convencional}
@@ -283,11 +284,11 @@ A continuación se establecen los criterios de aceptación de cada historia de u
           \item Se tiene un script para generar los inputs de los casos faltantes y simularlos.
           % \item Simulación de todos los datos faltantes establecidos previamente con COBRA-3CP.
           \item Se dispone de un inventario con todos los casos necesarios.
-          % \item Almacenado de los archivos INPUT/OUTPUT, siguiendo reglas de codificación previamente establecidas.
+          % \item Almacenado de los archivos OUTPUT, siguiendo reglas de codificación previamente establecidas.
         \end{itemize}
-      \item HU3 - herramienta de procesamiento de archivos INPUT/OUTPUT:
+      \item HU3 - herramienta de procesamiento de archivos OUTPUT:
         \begin{itemize}
-          \item Se tiene una herramienta que permita procesar en batch archivos INPUT/OUTPUT, obteniendo un único archivo de fácil importación luego (p.e.: .csv, .json, .parquet, etc.).
+          \item Se tiene una herramienta que permita procesar en batch archivos OUTPUT, obteniendo un único archivo de fácil importación luego (p.e.: .csv, .json, .parquet, etc.).
           \item Se dispone de todos los datos almacenados en un único archivo.
           % \item Procesado de todos los datos almacenados y guardado en un archivo único (p.e.: .parquet).
         \end{itemize}
@@ -362,14 +363,14 @@ A continuación se establecen los criterios de aceptación de cada historia de u
     \end{itemize}
   \item \textbf{Comprensión de los datos:}
     \begin{itemize}
-      \item Tipos de datos: archivos de INPUT y OUTPUT de COBRA-3CP.
+      \item Tipos de datos: archivos de OUTPUT de COBRA-3CP.
       \item Fuentes de datos: simulaciones con COBRA-3CP.
       \item Cantidad de datos: del orden de decenas de miles.
       \item Calidad de datos: los datos deben ser procesados desde los archivos de texto a valores.
     \end{itemize}
   \item \textbf{Preparación de los datos:}
     \begin{itemize}
-      \item Transformaciones: parseo de los archivos de INPUT y OUTPUT para obtener la información requerida.
+      \item Transformaciones: parseo de los archivos de OUTPUT para obtener la información requerida.
       % \item Características clave:
     \end{itemize}
   \item \textbf{Modelado:}
@@ -414,9 +415,9 @@ Historia de usuario & Tarea técnica & Estimación & Prioridad \\ \hline
   & 2.3: Simulación de casos faltantes. & 6 h & Media \\* \cline{2-4}
   & 2.4: Almacenado y cataloguización de salidas de las simulaciones. & 3 h & Media \\ \hline
 
-\multirow{2}{4cm}{HU3 - Herramienta de procesamiento de archivos de INPUT/OUTPUT}  
-  & 3.1: Desarrollo de herramienta para procesamiento de archivos de INPUT/OUTPUT. & 12 h & Alta \\* \cline{2-4}
-  & 3.2: Procesado de archivos de INPUT/OUTPUT. & 4 h & Alta \\ \hline
+\multirow{2}{4cm}{HU3 - Herramienta de procesamiento de archivos de OUTPUT}  
+  & 3.1: Desarrollo de herramienta para procesamiento de archivos de OUTPUT. & 12 h & Alta \\* \cline{2-4}
+  & 3.2: Procesado de archivos de OUTPUT. & 4 h & Alta \\ \hline
 
 \multirow{4}{4cm}{HU4 - Prueba de arquitectura de red neuronal} 
   & 4.1: Armado de estructura base sobre la que realizar pruebas. & 8 h & Alta \\* \cline{2-4}   
@@ -706,171 +707,124 @@ En la Figura \ref{fig:gantt} se tiene el Diagrama de Gantt del proyecto.
 \section{12. Gobernanza de datos}
 \label{sec:gobernanza}
 
-El proyecto utiliza datos provenientes de simulaciones con el código COBRA-3CP, propiedad del cliente \empclientename{}. Estos datos contienen información condfidencial respecto del diseño de la \CNA{}, sujetos a consideraciones legales.
+El proyecto utiliza datos provenientes de simulaciones con el código COBRA-3CP, propiedad del cliente \empclientename{}. Estos datos contienen información confidencial respecto del diseño de la \CNA{}, sujetos a consideraciones legales.
 
 \textbf{Aspectos considerados:}
 \begin{itemize}
-  \item Se filtraran los datos del diseño que no sean pertinentes al entrenamiento en el armado del dataset a partir de los OUTPUT de COBRA.
-  \item No se guardarán en repositorios públicos información respecto del diseño o la operación de la \CNA{}.
+  \item No se incluiran datos del diseño del reactor en el dataset creado a partir de los OUTPUT de COBRA.
+  \item No se guardará en repositorios públicos información respecto del diseño o la operación de la \CNA{}.
 \end{itemize}
 
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
-\begin{itemize}
-	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de (O). 
-\end{itemize}   
+\subsection{Identificación de los riesgos}
+Se han identificado los riesgos y se han estimado sus consecuencias, cuantificando la severidad y la probabilidad de ocurrencia del 1 al 10.
 
-Riesgo 2:
 \begin{itemize}
-	\item Severidad (S): X.\\
-	Justificación...
-	\item Ocurrencia (O): Y.\\
-	Justificación...
+    \item Riesgo 1: Incapacidad de localizar suficientes archivos de OUTPUT de simulaciones ya realizadas.
+    \begin{itemize}
+        \item Severidad (S): 10. Implicaría tener que realizar una cantidad de simulaciones muy grande, lo cual retrasaría significativamente el proyecto.
+        \item Probabilidad de ocurrencia (O): 2. Se dispone de la mayoría de la información generada por el Departamento en los últimos 15 años en \textit{backups}. La localización de la mayor cantidad de archivos depende más del tiempo disponible para la búsqueda que de la disponibilidad de la información en sí.
+    \end{itemize}
+    \item Riesgo 2: Indisponibilidad de recursos computacionales para entrenamiento de modelos.
+    \begin{itemize}
+        \item Severidad (S): 8. Implicaría tener que entrenar los modelos en servicios en la nube gratuitos, los cuales tienen límites bajos, impactando en el tiempo total dedicado a entrenar.
+        \item Probabilidad de ocurrencia (O): 2. Se dispone de mi computadora personal con GPU y de la computadora de mi empleo asignada a mí con GPU. Adicionalmente se puede disponer del uso de las computadoras de mis compañeros de trabajo para entrenar fuera de los horarios de oficina. La probabilidad de la indisponibilidad de todos los recursos computacionales de forma simultánea es baja.
+    \end{itemize}
+    \item Riesgo 3: No se dicta la materia ``Redes Neuronales Informadas por Física" durante el 2026.
+    \begin{itemize}
+        \item Severidad (S): 7. Implicaría tener que aprender sobre redes neuronales informadas por física por mi cuenta, lo cual retrasaría significativamente el proyecto.
+        \item Probabilidad de ocurrencia (O): 2. Se tiene confirmación por correo electrónico del Coordinador Académico de que se dictará la materia durante el segundo bimestre del 2026.
+    \end{itemize}
+    \item Riesgo 4: No se obtienen figuras de mérito claras para caracterizar la relación entre los perfiles de potencia axial y radial con la PLC.
+    \begin{itemize}
+        \item Severidad (S): 6. Uno de los objetivos del trabajo es evaluar si se pueden definir figuras de mérito.
+        \item Probabilidad de ocurrencia (O): 3. Se tiene conocimiento de algunas figuras de mérito ya establecidas, por lo que al menos encontrar la relación exacta de ellas puede realizarse. Adicionalmente el trabajo tiene por objetivo la evaluación de nuevas figuras de mérito, lo cual podría no ser posible.
+    \end{itemize}
+    \item Riesgo 5: Ningún modelo logra una precisión aceptable.
+    \begin{itemize}
+        \item Severidad (S): 7. El objetivo principal del trabajo es evaluar el reemplazo de COBRA por modelos de aprendizaje profundo, aunque la conclusión de que no son un reemplazo viable es válida.
+        \item Probabilidad de ocurrencia (O): 2. Si bien nunca se ha aplicado esta metodología en este problema, las simulaciones que se quieren reemplazar provienen de códigos que resuelven la física del problema de forma estructurada. Esto implica que alguna relación lógica existe entre las variables de entrada y salida.
+    \end{itemize}
 \end{itemize}
 
-Riesgo 3:
-\begin{itemize}
-	\item Severidad (S):  X.\\
-	Justificación...
-	\item Ocurrencia (O): Y.\\
-	Justificación...
-\end{itemize}
-
-
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+\subsection{Tabla de gestión de riesgos}
+En el Cuadro \ref{tab:riesgos} se tiene la Tabla de gestión de riesgos.
 
 \begin{table}[htpb]
 \centering
+\caption{Tabla de gestión de riesgos.}
+\label{tab:riesgos}
 \begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+Incapacidad de localizar suficientes archivos de OUTPUT de simulaciones ya realizadas. & 10 & 2 & 20 &   &   &      \\ \hline
+Indisponibilidad de recursos computacionales para entrenamiento de modelos. & 8 & 2 & 16 &   &   &      \\ \hline
+No se dicta la materia ``Redes Neuronales Informadas por Física" durante el 2026. & 7 & 2 & 14 &   &   &      \\ \hline
+No se obtienen figuras de mérito claras para caracterizar la relación entre los perfiles de potencia axial y radial con la PLC. & 6 & 3 & 18 &   &   &      \\ \hline
+Ningún modelo logra una precisión aceptable. & 7 & 2 & 14 &   &   &      \\ \hline
 \end{tabularx}%
 \end{table}
 
-Criterio adoptado: 
-
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
-
-Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
-
-c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
- 
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  \begin{itemize}
-	\item Severidad (S*): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O*): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
-	\end{itemize}
-
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-
-\end{consigna}
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 20.
+\begin{itemize}
+    \item Riesgo 1: se adicionará más tiempo a la HU2 (Simulación de datos faltantes) para completar la base de datos necesaria.
+    \begin{itemize}
+        \item Severidad (S*): 10. No cambia la severidad si no se logra una base de datos completa.
+        \item Probabilidad de ocurriencia (O*): 1. La probabilidad de no poder realizar las simulaciones para completar la base de datos es casi nula ya que se dispone del recurso computacional, del software y se sabe como realizar los archivos de entrada para realizar la simulación.
+    \end{itemize}
+\end{itemize}
 
 \section{14. Sprint Review}
 \label{sec:sprint_review}
-
-La revisión de sprint (\emph{Sprint Review}) es una práctica fundamental en metodologías ágiles. Consiste en revisar y evaluar lo que se ha completado al finalizar un sprint. En esta instancia, se presentan los avances y se verifica si las funcionalidades cumplen con los criterios de aceptación establecidos. También se identifican entregables parciales y se consideran ajustes si es necesario.
-
-Aunque el proyecto aún se encuentre en etapa de planificación, esta sección permite proyectar cómo se evaluarán las funcionalidades más importantes del backlog. Esta mirada anticipada favorece la planificación enfocada en valor y permite reflexionar sobre posibles obstáculos.
-
-\textbf{Objetivo:} anticipar cómo se evaluará el avance del proyecto a medida que se desarrollen las funcionalidades, utilizando como base al menos cuatro historias de usuario del \emph{Product Backlog}.
-
-
-Seleccionar al menos 4 HU del Product Backlog. Para cada una, completar la siguiente tabla de revisión proyectada:
-
-\textbf{Formato sugerido:}
-\begin{table}[htpb]
-\renewcommand{\arraystretch}{1.5}
-\begin{tabular}{|>{\raggedright\arraybackslash}m{2.4cm}|
-                >{\raggedright\arraybackslash}m{2.3cm}|
-                >{\raggedright\arraybackslash}m{3cm}|
-                >{\raggedright\arraybackslash}m{3cm}|
-                >{\raggedright\arraybackslash}m{3cm}|}
-\hline
-\rowcolor[HTML]{CCCCCC}
-\textbf{HU seleccionada} & \textbf{Tareas asociadas} & \textbf{Entregable esperado} & \textbf{¿Cómo sabrás que está cumplida?} & \textbf{Observaciones o riesgos} \\
-\hline
-                         & Tarea 1 &                             &                                           &                                     \\ \cline{2-2}
-\multirow{-2}{=}{HU1}    & Tarea 2 & \multirow{-2}{=}{Módulo funcional} & \multirow{-2}{=}{Cumple criterios de aceptación definidos} & \multirow{-2}{=}{Falta validar con el tutor} \\
-\hline
-                         & Tarea 1 &                             &                                           &                                     \\ \cline{2-2}
-\multirow{-2}{=}{HU3}    & Tarea 2 & \multirow{-2}{=}{Reporte generado} & \multirow{-2}{=}{Exportación disponible y clara} & \multirow{-2}{=}{Requiere datos reales} \\
-\hline
-                         & Tarea 1 &                             &                                           &                                     \\ \cline{2-2}
-\multirow{-2}{=}{HU5}    & Tarea 2 & \multirow{-2}{=}{Panel de gestión} & \multirow{-2}{=}{Roles diferenciados operativos} & \multirow{-2}{=}{Riesgo en integración} \\
-\hline
-                         & Tarea 1 &                             &                                           &                                     \\ \cline{2-2}
-\multirow{-2}{=}{HU7}    & Tarea 2 & \multirow{-2}{=}{Informe trimestral} & \multirow{-2}{=}{PDF con gráficos y evolución} & \multirow{-2}{=}{Puede faltar tiempo para ajustes} \\
-\hline
-\end{tabular}
-\end{table}
+En el Cuadro \ref{tab:sprint_review} se tiene el detalle de la Sprint Review.
 
 \section{15. Sprint Retrospective}    
 \label{sec:sprint_retro}
+En el Cuadro \ref{tab:sprint_retrospective} se tiene el detalle de la Sprint Retrospective.
 
-La retrospectiva de sprint es una práctica orientada a la mejora continua. Al finalizar un sprint, el equipo (o el alumno, si trabaja de forma individual) reflexiona sobre lo que funcionó bien, lo que puede mejorarse y qué acciones concretas pueden implementarse para trabajar mejor en el futuro.
-
-Durante la cursada se propuso el uso de la \textbf{Estrella de la Retrospectiva}, que organiza la reflexión en torno a cinco ejes:
-
-\begin{itemize}
-\item  ¿Qué hacer más?
-\item  ¿Qué hacer menos?
-\item  ¿Qué mantener?
-\item  ¿Qué empezar a hacer?
-\item  ¿Qué dejar de hacer?
-\end{itemize}
-
-Aun en una etapa temprana, esta herramienta permite que el alumno planifique su forma de trabajar, identifique anticipadamente posibles dificultades y diseñe estrategias de organización personal.
-
-\textbf{Objetivo:} reflexionar sobre las condiciones iniciales del proyecto, identificando fortalezas, posibles dificultades y estrategias de mejora, incluso antes del inicio del desarrollo.
-
-
-Completar la siguiente tabla tomando como referencia los cinco ejes de la Estrella de la Retrospectiva (\emph{Starfish} o estrella de mar). Esta instancia te ayudará a definir buenas prácticas desde el inicio y prepararte para enfrentar el trabajo de forma organizada y flexible. Se deberá completar la tabla al menos para 3 sprints técnicos y 1 no técnico.
-
-\textbf{Formato sugerido:}
-
+\begin{landscape}
 \begin{table}[htpb]
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{|>{\raggedright\arraybackslash}p{1.8cm}|
-                >{\raggedright\arraybackslash}p{2.3cm}|
-                >{\raggedright\arraybackslash}p{2.3cm}|
-                >{\raggedright\arraybackslash}p{2.3cm}|
-                >{\raggedright\arraybackslash}p{2.3cm}|
-                >{\raggedright\arraybackslash}p{2.3cm}|}
+\centering
+\caption{Sprint review.}
+\label{tab:sprint_review}
+\begin{tabular}{p{4cm}p{2cm}p{4.5cm}p{4.5cm}p{4.5cm}}
+% \begin{tabular}{cccccc}
 \hline
-\rowcolor[HTML]{CCCCCC} 
-\textbf{Sprint tipo y N°} & \textbf{¿Qué hacer más?} & \textbf{¿Qué hacer menos?} & \textbf{¿Qué mantener?} & \textbf{¿Qué empezar a hacer?} & \textbf{¿Qué dejar de hacer?} \\
+\rowcolor[HTML]{cccccc}
+\textbf{HU seleccionada} & \textbf{Tareas asociadas} & \textbf{Entregable esperado} & \textbf{¿Cómo sabrás que está cumplida?} & \textbf{Observaciones o riesgos} \\
 \hline
-Sprint técnico - 1 & Validaciones continuas con el alumno & Cambios sin versión registrada & Pruebas con datos simulados & Documentar cambios propuestos & Ajustes sin análisis de impacto \\
+\textbf{HU1} - Determinación del set de datos & T1.1, T1.2, T1.3 & Inventario documentado de simulaciones disponibles y documento con casos faltantes a simular. & Se dispone de un inventario documentado de todos los datos disponibles y un documento con los casos ya simulados y los que es necesario simular. & Riesgo de no encontrar suficientes archivos de OUTPUT, mitigado con simulación de casos faltantes (HU2). \\
 \hline
-Sprint técnico - 2 & Verificar configuraciones en múltiples escenarios & Modificar parámetros sin guardar historial & Perfiles reutilizables & Usar logs para configuración & Repetir pruebas manuales innecesarias \\
+\textbf{HU3} - Herramienta de procesamiento de archivos OUTPUT & T3.1, T3.2 & Herramienta batch para procesar archivos OUTPUT y dataset consolidado en un único archivo. & Se dispone de todos los datos almacenados en un único archivo de fácil importación, generado de forma reproducible por la herramienta desarrollada. & Depende de la disponibilidad de archivos OUTPUT. \\
 \hline
-Sprint técnico - 8 & Comparar correlaciones con casos previos & Cambiar parámetros sin justificar & Revisión cruzada de métricas & Anotar configuraciones usadas & Trabajar sin respaldo de datos \\
+\textbf{HU5} - Modelo básico documentado & T5.1, T5.2, T5.3 & Repositorio de GitHub documentado con el modelo final en Python y documento con la arquitectura y métricas del modelo. & Se tiene un repositorio de GitHub documentado y un documento con la arquitectura y métricas del modelo base. & La documentación depende de que la HU4 esté finalizada. Riesgo de que la arquitectura no alcance la precisión esperada. \\
 \hline
-Sprint no técnico - 12 (por ej.: ``Defensa'') & Ensayos orales con feedback & Cambiar contenidos en la memoria & Material visual claro & Dividir la presentación por bloques & Agregar gráficos difíciles de explicar \\
+\textbf{HU9} - Implementación de red neuronal informada por física & T9.1, T9.2, T9.3, T9.4, T9.5, T9.6, T9.7, T9.8 & Jupyter Notebooks con implementación, análisis de hiperparámetros y comparativa de la PINN contra modelos previos; documento con las ecuaciones implementadas. & Se tienen las cuatro Jupyter Notebooks especificadas y el documento de ecuaciones. La PINN supera o iguala al modelo base en métricas de error. & Alta incerteza en la implementación de la PINN. Depende del cursado de la materia (HU8). Riesgo de que no se logre superar la precisión del modelo convencional. \\
 \hline
 \end{tabular}
 \end{table}
+\end{landscape}
 
 
-
+\begin{landscape}
+\begin{table}[htpb]
+\centering
+\caption{Sprint retrospective.}
+\label{tab:sprint_retrospective}
+% \begin{tabular}{cccccc}
+\begin{tabular}{p{2.5cm}p{3.5cm}p{3.5cm}p{3.5cm}p{3.5cm}p{3.5cm}}
+\hline
+\rowcolor[HTML]{cccccc}
+\textbf{Sprint tipo y N°} & \textbf{¿Qué hacer más?} & \textbf{¿Qué hacer menos?} & \textbf{¿Qué mantener?} & \textbf{¿Qué empezar a hacer?} & \textbf{¿Qué dejar de hacer?} \\ \hline
+Sprint técnico (N1) & Ser detallado en los casos necesarios. Buscar y guardar de forma ordenada los archivos. & Ver el detalle de cada archivo, se va a post-procesar y filtrar luego. & El orden de los archivos. & Reuniones alumno-director para no perder el eje del trabajo. & Irse por las ramas en temas no centrales. \\ \hline
+Sprint técnico (N2) & Guardar todos los archivos de procesado de forma ordenada en un repositorio. & Buscar armar la herramienta perfecta de procesado. & Reuniones alumno-director. & Escribir las partes de la memoria que ya estén definidas. & Perfeccionar el código de forma innecesaria. \\ \hline
+Sprint técnico (N8) & Documentar las pruebas realizadas. & Re-entrenar el modelo con parámetros ya usados. & Escritura de la memoria. & Ordenar todos los modelos probados para su comparativa. & Demasiadas comparativas entre modelos que no se entiendan. \\ \hline
+Sprint no técnica (N12) & Práctica de la presentación con compañeros de trabajo. & Buscar sacarle más rendimiento a los modelos. & Gráficos representativos. & Definir las partes de la presentación. & Sumar información a la memoria y la presentación. \\ \hline
+\end{tabular}%
+\end{table}
+\end{landscape}
 
 \end{document}
