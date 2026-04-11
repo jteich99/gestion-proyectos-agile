@@ -71,6 +71,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 2      & Se completa hasta el punto 9 inclusive                & 22 de marzo de 2026 \\ \hline
 3      & Se completa hasta el punto 12 inclusive               & 30 de marzo de 2026 \\ \hline
 4      & Se completa hasta el punto 15 inclusive               & 4 de abril de 2026 \\ \hline
+5      & Se corrigen comentarios sobre versión 4               & 11 de abril de 2026 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & {día} de {mes} de 202X \\ \hline
@@ -711,7 +712,7 @@ El proyecto utiliza datos provenientes de simulaciones con el código COBRA-3CP,
 
 \textbf{Aspectos considerados:}
 \begin{itemize}
-  \item No se incluiran datos del diseño del reactor en el dataset creado a partir de los OUTPUT de COBRA.
+  \item No se incluirán datos del diseño del reactor en el dataset creado a partir de los OUTPUT de COBRA.
   \item No se guardará en repositorios públicos información respecto del diseño o la operación de la \CNA{}.
 \end{itemize}
 
@@ -724,23 +725,23 @@ Se han identificado los riesgos y se han estimado sus consecuencias, cuantifican
 \begin{itemize}
     \item Riesgo 1: Incapacidad de localizar suficientes archivos de OUTPUT de simulaciones ya realizadas.
     \begin{itemize}
-        \item Severidad (S): 10. Implicaría tener que realizar una cantidad de simulaciones muy grande, lo cual retrasaría significativamente el proyecto.
+        \item Severidad (S): 10. Implicaría tener que realizar una cantidad de simulaciones muy grande, que retrasaría significativamente el proyecto.
         \item Probabilidad de ocurrencia (O): 2. Se dispone de la mayoría de la información generada por el Departamento en los últimos 15 años en \textit{backups}. La localización de la mayor cantidad de archivos depende más del tiempo disponible para la búsqueda que de la disponibilidad de la información en sí.
     \end{itemize}
     \item Riesgo 2: Indisponibilidad de recursos computacionales para entrenamiento de modelos.
     \begin{itemize}
-        \item Severidad (S): 8. Implicaría tener que entrenar los modelos en servicios en la nube gratuitos, los cuales tienen límites bajos, impactando en el tiempo total dedicado a entrenar.
-        \item Probabilidad de ocurrencia (O): 2. Se dispone de mi computadora personal con GPU y de la computadora de mi empleo asignada a mí con GPU. Adicionalmente se puede disponer del uso de las computadoras de mis compañeros de trabajo para entrenar fuera de los horarios de oficina. La probabilidad de la indisponibilidad de todos los recursos computacionales de forma simultánea es baja.
+        \item Severidad (S): 8. Implicaría tener que entrenar los modelos en servicios en la nube gratuitos, que tienen límites bajos e impactaría en el tiempo total dedicado a entrenar.
+        \item Probabilidad de ocurrencia (O): 2. Se dispone de la computadora personal del alumno con GPU y de la computadora provista por el cliente con GPU. Adicionalmente se puede disponer del uso de otras computadoras del cliente para entrenar fuera de los horarios de oficina. La probabilidad de la indisponibilidad de todos los recursos computacionales de forma simultánea es baja.
     \end{itemize}
     \item Riesgo 3: No se dicta la materia ``Redes Neuronales Informadas por Física" durante el 2026.
     \begin{itemize}
-        \item Severidad (S): 7. Implicaría tener que aprender sobre redes neuronales informadas por física por mi cuenta, lo cual retrasaría significativamente el proyecto.
+        \item Severidad (S): 7. Implicaría tener que aprender sobre redes neuronales informadas por física por mi cuenta, que retrasaría significativamente el proyecto.
         \item Probabilidad de ocurrencia (O): 2. Se tiene confirmación por correo electrónico del Coordinador Académico de que se dictará la materia durante el segundo bimestre del 2026.
     \end{itemize}
     \item Riesgo 4: No se obtienen figuras de mérito claras para caracterizar la relación entre los perfiles de potencia axial y radial con la PLC.
     \begin{itemize}
         \item Severidad (S): 6. Uno de los objetivos del trabajo es evaluar si se pueden definir figuras de mérito.
-        \item Probabilidad de ocurrencia (O): 3. Se tiene conocimiento de algunas figuras de mérito ya establecidas, por lo que al menos encontrar la relación exacta de ellas puede realizarse. Adicionalmente el trabajo tiene por objetivo la evaluación de nuevas figuras de mérito, lo cual podría no ser posible.
+        \item Probabilidad de ocurrencia (O): 3. Se tiene conocimiento de algunas figuras de mérito ya establecidas, por lo que al menos encontrar la relación exacta de ellas puede realizarse. Adicionalmente el trabajo tiene por objetivo la evaluación de nuevas figuras de mérito, que podría no ser posible.
     \end{itemize}
     \item Riesgo 5: Ningún modelo logra una precisión aceptable.
     \begin{itemize}
@@ -760,15 +761,15 @@ En el Cuadro \ref{tab:riesgos} se tiene la Tabla de gestión de riesgos.
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-Incapacidad de localizar suficientes archivos de OUTPUT de simulaciones ya realizadas. & 10 & 2 & 20 &   &   &      \\ \hline
-Indisponibilidad de recursos computacionales para entrenamiento de modelos. & 8 & 2 & 16 &   &   &      \\ \hline
-No se dicta la materia ``Redes Neuronales Informadas por Física" durante el 2026. & 7 & 2 & 14 &   &   &      \\ \hline
-No se obtienen figuras de mérito claras para caracterizar la relación entre los perfiles de potencia axial y radial con la PLC. & 6 & 3 & 18 &   &   &      \\ \hline
-Ningún modelo logra una precisión aceptable. & 7 & 2 & 14 &   &   &      \\ \hline
+Incapacidad de localizar suficientes archivos de OUTPUT de simulaciones ya realizadas. & 10 & 2 & 20 & 10 & 1 & 10    \\ \hline
+Indisponibilidad de recursos computacionales para entrenamiento de modelos. & 8 & 2 & 16 & - & - & -    \\ \hline
+No se dicta la materia ``Redes Neuronales Informadas por Física" durante el 2026. & 7 & 2 & 14 & - & - & -    \\ \hline
+No se obtienen figuras de mérito claras para caracterizar la relación entre los perfiles de potencia axial y radial con la PLC. & 6 & 3 & 18 & - & - & -    \\ \hline
+Ningún modelo logra una precisión aceptable. & 7 & 2 & 14 & - & - & -    \\ \hline
 \end{tabularx}%
 \end{table}
 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 20.
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean iguales   mayores a 20.
 \begin{itemize}
     \item Riesgo 1: se adicionará más tiempo a la HU2 (Simulación de datos faltantes) para completar la base de datos necesaria.
     \begin{itemize}
@@ -777,21 +778,18 @@ Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean may
     \end{itemize}
 \end{itemize}
 
+% En el Cuadro \ref{tab:sprint_review} se tiene el detalle de la Sprint Review.
+\newpage
+\begin{landscape}
+
 \section{14. Sprint Review}
 \label{sec:sprint_review}
-En el Cuadro \ref{tab:sprint_review} se tiene el detalle de la Sprint Review.
 
-\section{15. Sprint Retrospective}    
-\label{sec:sprint_retro}
-En el Cuadro \ref{tab:sprint_retrospective} se tiene el detalle de la Sprint Retrospective.
-
-\begin{landscape}
-\begin{table}[htpb]
+\begin{table}[htpb!]
 \centering
 \caption{Sprint review.}
 \label{tab:sprint_review}
-\begin{tabular}{p{4cm}p{2cm}p{4.5cm}p{4.5cm}p{4.5cm}}
-% \begin{tabular}{cccccc}
+\begin{tabular}{p{4cm}p{2cm}p{5cm}p{5cm}p{5cm}}
 \hline
 \rowcolor[HTML]{cccccc}
 \textbf{HU seleccionada} & \textbf{Tareas asociadas} & \textbf{Entregable esperado} & \textbf{¿Cómo sabrás que está cumplida?} & \textbf{Observaciones o riesgos} \\
@@ -806,10 +804,12 @@ En el Cuadro \ref{tab:sprint_retrospective} se tiene el detalle de la Sprint Ret
 \hline
 \end{tabular}
 \end{table}
-\end{landscape}
 
+\newpage
+\section{15. Sprint Retrospective}    
+\label{sec:sprint_retro}
+% En el Cuadro \ref{tab:sprint_retrospective} se tiene el detalle de la Sprint Retrospective.
 
-\begin{landscape}
 \begin{table}[htpb]
 \centering
 \caption{Sprint retrospective.}
@@ -819,10 +819,10 @@ En el Cuadro \ref{tab:sprint_retrospective} se tiene el detalle de la Sprint Ret
 \hline
 \rowcolor[HTML]{cccccc}
 \textbf{Sprint tipo y N°} & \textbf{¿Qué hacer más?} & \textbf{¿Qué hacer menos?} & \textbf{¿Qué mantener?} & \textbf{¿Qué empezar a hacer?} & \textbf{¿Qué dejar de hacer?} \\ \hline
-Sprint técnico (N1) & Ser detallado en los casos necesarios. Buscar y guardar de forma ordenada los archivos. & Ver el detalle de cada archivo, se va a post-procesar y filtrar luego. & El orden de los archivos. & Reuniones alumno-director para no perder el eje del trabajo. & Irse por las ramas en temas no centrales. \\ \hline
-Sprint técnico (N2) & Guardar todos los archivos de procesado de forma ordenada en un repositorio. & Buscar armar la herramienta perfecta de procesado. & Reuniones alumno-director. & Escribir las partes de la memoria que ya estén definidas. & Perfeccionar el código de forma innecesaria. \\ \hline
-Sprint técnico (N8) & Documentar las pruebas realizadas. & Re-entrenar el modelo con parámetros ya usados. & Escritura de la memoria. & Ordenar todos los modelos probados para su comparativa. & Demasiadas comparativas entre modelos que no se entiendan. \\ \hline
-Sprint no técnica (N12) & Práctica de la presentación con compañeros de trabajo. & Buscar sacarle más rendimiento a los modelos. & Gráficos representativos. & Definir las partes de la presentación. & Sumar información a la memoria y la presentación. \\ \hline
+Sprint técnico (N1) & Ser detallado en los casos necesarios. Buscar y guardar de forma ordenada los archivos. & Ver el detalle de cada archivo, se va a post-procesar y filtrar luego. & El orden de los archivos. & Reuniones alumno-director para no perder el eje del trabajo. & Enfocarse en temas no prioritarios. \\ \hline
+Sprint técnico (N2) & Guardar todos los archivos de procesado de forma ordenada en un repositorio. & Continuar el desarrollo de la herramienta de procesado una vez ya está funcional. & Reuniones alumno-director. & Escribir las partes de la memoria que ya estén definidas. & Perfeccionar el código de forma innecesaria. \\ \hline
+Sprint técnico (N8) & Documentar las pruebas realizadas. & Reentrenar el modelo con parámetros ya usados. & Escritura de la memoria. & Ordenar todos los modelos probados para su comparativa. & Demasiadas comparativas entre modelos que no se entiendan. \\ \hline
+Sprint no técnico (N12) & Práctica de la presentación con compañeros de trabajo. & Continuar el perfeccionamiento de los modelos. & Gráficos representativos. & Definir las partes de la presentación. & Sumar información a la memoria y la presentación. \\ \hline
 \end{tabular}%
 \end{table}
 \end{landscape}
