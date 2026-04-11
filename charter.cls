@@ -219,16 +219,16 @@
   }
 
 %to do not put numbers in sections
-\usepackage{titlesec}
-\titleformat{\section}{}{}{0em}{\large\bfseries}
+% \usepackage{titlesec}
+% \titleformat{\section}{}{}{0em}{\large\bfseries}
 
-\usepackage{titletoc}
-\titlecontents{section}
-              [0em]
-              {\addvspace{1pc}\bfseries}
-              {}
-              {}
-              {\mdseries\titlerule*[.75pc]{.}\bfseries\contentspage}
+% \usepackage{titletoc}
+% \titlecontents{section}
+%               [0em]
+%               {\addvspace{1pc}\bfseries}
+%               {}
+%               {}
+%               {\mdseries\titlerule*[.75pc]{.}\bfseries\contentspage}
     
 %\renewcommand{\thesection}{}% Remove section references...
 %\renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
